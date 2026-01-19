@@ -1,0 +1,453 @@
+/* ================= GLOBAL ================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding-top: 160px; /* space for fixed header */
+  background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+    url("../images/gym1.jpg") center / cover no-repeat fixed;
+  color: #fff;
+  font-family: 'Baloo Bhai', cursive;
+}
+
+/* ================= HEADER ================= */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(10px);
+  height: 160px;
+}
+
+.left {
+  position: absolute;
+  left: 60px;
+  top: 20px;
+  text-align: center;
+}
+
+.left img {
+  width: 80px;
+  filter: invert(100%);
+}
+
+.left div {
+  font-size: 30px;
+}
+
+.right {
+  position: absolute;
+  right: 40px;
+  top: 45px;
+}
+
+.center {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  padding-top: 40px;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  list-style: none;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline-block;
+  font-size: 32px;
+}
+
+.navbar li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 20px;
+  position: relative;
+}
+
+.navbar li a::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: grey;
+  transition: 0.3s;
+}
+
+.navbar li a:hover::after,
+.navbar li a.active::after {
+  width: 100%;
+}
+
+/* ================= BUTTON ================= */
+.btn {
+  background: black;
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid grey;
+  border-radius: 10px;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: grey;
+}
+
+/* ================= HERO SECTIONS ================= */
+.about-hero,
+.services-hero,
+.calculator-hero,
+.contact-hero {
+  padding: 120px 20px;
+  text-align: center;
+  background: rgba(0,0,0,0.65);
+}
+
+.about-hero h1,
+.services-hero h1,
+.calculator-hero h1,
+.contact-hero h1 {
+  font-size: 90px;
+}
+
+.about-hero p,
+.services-hero p,
+.calculator-hero p,
+.contact-hero p {
+  font-size: 36px;
+  color: #ddd;
+}
+
+/* ================= GLASS ================= */
+.glass {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 25px;
+  padding: 50px;
+}
+
+/* ================= FORMS ================= */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  border-radius: 10px;
+  border: 2px solid black;
+  outline: none;
+  font-family: 'Baloo Bhai';
+}
+
+textarea {
+  resize: none;
+}
+
+/* ================= INDEX ================= */
+.container {
+  width: 420px;
+  margin: 120px 80px;
+}
+
+#message,
+#bmiResult {
+  text-align: center;
+  font-size: 26px;
+}
+
+/* ================= ABOUT ================= */
+.about-section {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 80px 10%;
+  flex-wrap: wrap;
+}
+
+.about-text {
+  flex: 1;
+  font-size: 36px;
+  line-height: 1.8;
+  min-width: 300px;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 300px;
+  max-height: 700px;
+  overflow: hidden;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ================= TIMELINE ================= */
+.timeline {
+  padding: 80px 10%;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 90px;
+  flex-wrap: wrap;
+}
+
+.timeline-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.timeline-image {
+  flex: 1;
+  min-width: 300px;
+  max-height: 700px;
+  overflow: hidden;
+}
+
+.timeline-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.5s ease;
+}
+
+.timeline-image img:hover {
+  transform: scale(1.05);
+}
+
+.timeline-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.timeline-content h3 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.timeline-content p {
+  font-size: 26px;
+  line-height: 1.7;
+  color: #eee;
+}
+
+/* ================= SERVICES ================= */
+.services-section {
+  padding: 100px 10%;
+}
+
+.service-card {
+  display: flex;
+  gap: 50px;
+  margin-bottom: 100px;
+}
+
+.service-card img {
+  width: 45%;
+  border-radius: 20px;
+}
+
+.service-content h2 {
+  font-size: 48px;
+}
+
+.service-content p,
+.service-content li {
+  font-size: 26px;
+}
+
+/* ================= CALCULATOR ================= */
+.calculator-section {
+  display: flex;
+  justify-content: center;
+  padding: 100px 10%;
+}
+
+.calculator-box {
+  width: 450px;
+}
+
+/* ================= CONTACT ================= */
+.contact-section {
+  display: flex;
+  gap: 60px;
+  padding: 100px 10%;
+  font-size: 30px;
+}
+
+.contact-info,
+.contact-form {
+  width: 60%;
+}
+
+/* ================= MOBILE ================= */
+.menu-icon {
+  display: none;
+  font-size: 40px;
+  position: absolute;
+  right: 30px;
+  top: 50px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+
+  .menu-icon {
+    display: block;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    background: black;
+    position: absolute;
+    top: 160px;
+    width: 100%;
+  }
+
+  .navbar.show {
+    display: flex;
+  }
+
+  .center,
+  .about-section,
+  .service-card,
+  .contact-section {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .service-card img,
+  .contact-info,
+  .contact-form {
+    width: 100%;
+  }
+}
+
+/* ================= ANIMATIONS ================= */
+.fade-up {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: 0.9s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= HERO ================= */
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 160px);
+  padding-left: 80px;
+}
+
+/* FIX: allow form to expand */
+.hero-left {
+  width: auto;
+  max-width: 600px;
+}
+
+/* ================= INPUT DARK ================= */
+input, select {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+}
+
+input::placeholder {
+  color: #ccc;
+}
+
+/* ================= PROMINENT FORM ================= */
+.prominent-form {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 60px 50px;
+  max-width: 600px;
+  width: 90%;
+  margin: 80px auto;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.prominent-form h2 {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.prominent-form input,
+.prominent-form select,
+.prominent-form button {
+  width: 100%;
+  padding: 18px 20px;
+  font-size: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.prominent-form input::placeholder,
+.prominent-form select {
+  color: #ccc;
+}
+
+.prominent-form input:focus,
+.prominent-form select:focus {
+  border-color: #fff;
+  background: rgba(255,255,255,0.15);
+}
+
+.prominent-form button {
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.prominent-form button:hover {
+  background: #ff1a1a;
+  transform: translateY(-3px);
+}
+
+/* MOBILE SAFETY ONLY */
+@media (max-width: 600px) {
+  h1 { font-size: 48px; }
+  input, select, textarea { font-size: 18px; }
+}

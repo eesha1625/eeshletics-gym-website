@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eeshletics | Fitness Calculator</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Baloo Bhai" rel="stylesheet">
+<script src="js/script.js"defer></script>
+</head>
+<body>
+
+<!-- HEADER (SAME AS SITE) -->
+<header class="header">
+  <div class="left">
+    <img src="../images/dumbbell.png" alt="">
+    <div>Eeshletics</div>
+  </div>
+
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+  <div class="center">
+    <ul class="navbar" id="navMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="FitnessCalculator.html" class="active">Fitness Calculator</a></li>
+      <li><a href="ContactUs.html">Contact us</a></li>
+    </ul>
+  </div>
+
+  <div class="right">
+    <button class="btn">Call us</button>
+    <button class="btn">Email us</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="calculator-hero">
+  <h1>Fitness Calculator</h1>
+  <p>Calculate BMI, BMR & Daily Calories</p>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calculator-section">
+  <div class="calculator-box">
+
+    <input type="number" id="fcAge" placeholder="Age (years)">
+    <input type="number" id="fcWeight" placeholder="Weight (kg)">
+    <input type="number" id="fcHeight" placeholder="Height (cm)">
+
+    <select id="fcGender">
+      <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+
+    <select id="fcActivity">
+      <option value="">Activity Level</option>
+      <option value="1.2">Sedentary</option>
+      <option value="1.375">Light Exercise</option>
+      <option value="1.55">Moderate Exercise</option>
+      <option value="1.725">Heavy Exercise</option>
+    </select>
+
+    <button class="btn" onclick="calculateFitness()">Calculate</button>
+
+    <div class="result-box">
+      <p id="fcBMI"></p>
+      <p id="fcBMR"></p>
+      <p id="fcCalories"></p>
+      <p id="fcBodyType"></p>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
+s

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eeshletics | Contact Us</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Baloo Bhai" rel="stylesheet">
+  <script src="js/script.js"defer></script>
+</head>
+<body>
+<!-- HEADER -->
+<header class="header">
+  <div class="left">
+    <img src="../images/dumbbell.png" alt="">
+    <div>Eeshletics</div>
+  </div>
+
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+  <div class="center">
+    <ul class="navbar" id="navMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="FitnessCalculator.html">Fitness Calculator</a></li>
+      <li><a href="ContactUs.html" class="active">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <div class="right">
+    <button class="btn">Call us</button>
+    <button class="btn">Email us</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <h1>Contact Eeshletics</h1>
+  <p>We’re here to help you transform your fitness journey</p>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+
+  <!-- CONTACT INFO -->
+  <div class="contact-info">
+    <h2>Get In Touch</h2>
+    <p>📍 Location: Karachi, Pakistan</p>
+    <p>📞 Phone: +92 300 1234567</p>
+    <p>📧 Email: info@eeshletics.com</p>
+    <p>🕒 Timings: Mon – Sun (6AM – 11PM)</div>
+
+  <!-- CONTACT FORM -->
+  <form class="contact-form" onsubmit="submitContact(event)">
+    <h2>Send Us a Message</h2>
+
+    <input type="text" id="cName" placeholder="Your Name" required>
+    <input type="email" id="cEmail" placeholder="Your Email" required>
+    <input type="text" id="cSubject" placeholder="Subject" required>
+    <textarea id="cMessage" placeholder="Your Message" required></textarea>
+
+    <button class="btn" type="submit">Send Message</button>
+
+    <p id="contactStatus"></p>
+  </form>
+
+</section>
+
+
+</body>
+</html>
