@@ -305,10 +305,10 @@ textarea {
 /* ================= MOBILE ================= */
 .menu-icon {
   display: none;
-  font-size: 40px;
+  font-size: 34px;
   position: absolute;
-  right: 30px;
-  top: 50px;
+  right: 20px;
+  top: 25px;
   cursor: pointer;
 }
 
@@ -465,17 +465,19 @@ input::placeholder {
   }
 
   .left {
-    position: static;
-    text-align: center;
-    margin-bottom: 10px;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    text-align: left;
   }
 
   .left img {
-    width: 60px;
+    width: 50px;
   }
 
   .left div {
-    font-size: 22px;
+    font-size: 18px;
+    line-height: 1;
   }
 
   .right {
@@ -524,7 +526,7 @@ input::placeholder {
   }
 
   .prominent-form h2 {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   /* INPUTS */
@@ -537,7 +539,8 @@ input::placeholder {
   /* ABOUT / TIMELINE / SERVICES */
   .about-text,
   .timeline-content {
-    font-size: 20px;
+    font-size: 16px;
+    padding: 14px;
   }
 
   .timeline-content h3 {
@@ -561,4 +564,40 @@ input::placeholder {
     width: 100%;
   }
 }
+@media (max-width: 768px) {
+
+  /* NAVBAR */
+  .navbar li {
+    font-size: 18px;
+  }
+
+  /* HERO TITLES */
+  .about-hero h1,
+  .services-hero h1,
+  .calculator-hero h1,
+  .contact-hero h1 {
+    font-size: 34px;
+  }
+
+  .about-hero p,
+  .services-hero p,
+  .calculator-hero p,
+  .contact-hero p {
+    font-size: 18px;
+  }
+
+  /* BODY TEXT */
+  .about-text,
+  .timeline-content p,
+  .service-content p,
+  .contact-info p {
+    font-size: 18px;
+  }
+
+  .timeline-content h3 {
+    font-size: 22px;
+  }
+}
+
+
 
