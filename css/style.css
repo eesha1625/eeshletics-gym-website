@@ -451,33 +451,39 @@ input::placeholder {
   h1 { font-size: 48px; }
   input, select, textarea { font-size: 18px; }
 }
-/* ================= MOBILE FIX ================= */
+/* ================= MOBILE REFINED ================= */
 @media (max-width: 768px) {
 
-  /* HEADER */
-  .header {
-    height: auto;
-    padding: 20px 0;
+  /* ===== BODY ===== */
+  body {
+    padding-top: 110px;
+    background-attachment: scroll;
   }
 
-  body {
-    padding-top: 120px;
+  /* ===== HEADER ===== */
+  .header {
+    height: auto;
+    padding: 12px 0;
   }
 
   .left {
-    position: absolute;
-    left: 20px;
-    top: 15px;
-    text-align: left;
+    left: 15px;
+    top: 10px;
   }
 
   .left img {
-    width: 50px;
+    width: 48px;
   }
 
   .left div {
     font-size: 18px;
-    line-height: 1;
+  }
+
+  .menu-icon {
+    display: block;
+    font-size: 30px;
+    top: 18px;
+    right: 18px;
   }
 
   .right {
@@ -486,92 +492,43 @@ input::placeholder {
 
   .center {
     width: 100%;
-    padding-top: 10px;
+    padding: 0;
   }
 
-  /* NAVBAR */
+  /* ===== NAVBAR ===== */
+  .navbar {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar.show {
+    display: flex;
+  }
+
   .navbar li {
-    font-size: 22px;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
   }
 
   .navbar li a {
-    padding: 15px;
+    display: block;
+    padding: 14px 0;
   }
 
-  /* HERO TEXT */
-  .about-hero h1,
-  .services-hero h1,
-  .calculator-hero h1,
-  .contact-hero h1 {
-    font-size: 42px;
-  }
-
-  .about-hero p,
-  .services-hero p,
-  .calculator-hero p,
-  .contact-hero p {
-    font-size: 20px;
-  }
-
-  /* HERO FORM */
+  /* ===== HERO ===== */
   .hero {
-    padding-left: 0;
+    padding: 30px 15px;
     justify-content: center;
+    text-align: center;
   }
 
-  .prominent-form {
-    padding: 30px 20px;
-    width: 95%;
-    margin: 40px auto;
-  }
-
-  .prominent-form h2 {
-    font-size: 24px;
-  }
-
-  /* INPUTS */
-  input,
-  select,
-  textarea {
-    font-size: 18px;
-  }
-
-  /* ABOUT / TIMELINE / SERVICES */
-  .about-text,
-  .timeline-content {
-    font-size: 16px;
-    padding: 14px;
-  }
-
-  .timeline-content h3 {
-    font-size: 26px;
-  }
-
-  /* CONTACT */
-  .contact-section {
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .contact-info,
-  .contact-form {
-    width: 100%;
-    font-size: 20px;
-  }
-
-  /* CALCULATOR */
-  .calculator-box {
-    width: 100%;
-  }
-}
-@media (max-width: 768px) {
-
-  /* NAVBAR */
-  .navbar li {
-    font-size: 18px;
-  }
-
-  /* HERO TITLES */
+  /* ===== HERO TITLES ===== */
   .about-hero h1,
   .services-hero h1,
   .calculator-hero h1,
@@ -586,18 +543,109 @@ input::placeholder {
     font-size: 18px;
   }
 
-  /* BODY TEXT */
-  .about-text,
-  .timeline-content p,
-  .service-content p,
-  .contact-info p {
+  /* ===== FORMS ===== */
+  .prominent-form {
+    padding: 26px 18px;
+    width: 95%;
+    margin: 40px auto;
+    border-radius: 22px;
+  }
+
+  .prominent-form h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  .prominent-form button {
     font-size: 18px;
+    padding: 14px;
+  }
+
+  /* ===== ABOUT ===== */
+  .about-section {
+    padding: 50px 6%;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .about-text {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    padding: 50px 6%;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 60px;
   }
 
   .timeline-content h3 {
     font-size: 22px;
   }
+
+  .timeline-content p {
+    font-size: 18px;
+  }
+
+  /* ===== SERVICES ===== */
+  .services-section {
+    padding: 50px 6%;
+  }
+
+  .service-card {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .service-card img {
+    width: 100%;
+  }
+
+  .service-content h2 {
+    font-size: 26px;
+  }
+
+  .service-content p,
+  .service-content li {
+    font-size: 18px;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact-section {
+    flex-direction: column;
+    padding: 50px 6%;
+    gap: 35px;
+  }
+
+  .contact-info,
+  .contact-form {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  /* ===== CALCULATOR ===== */
+  .calculator-section {
+    padding: 50px 6%;
+  }
+
+  .calculator-box {
+    width: 100%;
+  }
 }
+
+
 
 
 
