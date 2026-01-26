@@ -302,20 +302,166 @@ textarea {
   width: 60%;
 }
 
-/* ================= MOBILE ================= */
-/* ================= MOBILE ULTIMATE REFINEMENT ================= */
+.menu-icon {
+  display: none;
+  font-size: 34px;
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+
+  .menu-icon {
+    display: block;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    background: black;
+    position: absolute;
+    top: 160px;
+    width: 100%;
+  }
+
+  .navbar.show {
+    display: flex;
+  }
+
+  .center,
+  .about-section,
+  .service-card,
+  .contact-section {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .service-card img,
+  .contact-info,
+  .contact-form {
+    width: 100%;
+  }
+}
+
+/* ================= ANIMATIONS ================= */
+.fade-up {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: 0.9s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= HERO ================= */
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 160px);
+  padding-left: 80px;
+}
+
+/* FIX: allow form to expand */
+.hero-left {
+  width: auto;
+  max-width: 600px;
+}
+
+/* ================= INPUT DARK ================= */
+input, select {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+}
+
+input::placeholder {
+  color: #ccc;
+}
+
+/* ================= PROMINENT FORM ================= */
+.prominent-form {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 60px 50px;
+  max-width: 600px;
+  width: 90%;
+  margin: 80px auto;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.prominent-form h2 {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.prominent-form input,
+.prominent-form select,
+.prominent-form button {
+  width: 100%;
+  padding: 18px 20px;
+  font-size: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.prominent-form input::placeholder,
+.prominent-form select {
+  color: #ccc;
+}
+
+.prominent-form input:focus,
+.prominent-form select:focus {
+  border-color: #fff;
+  background: rgba(255,255,255,0.15);
+}
+
+.prominent-form button {
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.prominent-form button:hover {
+  background: #ff1a1a;
+  transform: translateY(-3px);
+}
+
+/* MOBILE SAFETY ONLY */
+@media (max-width: 600px) {
+  h1 { font-size: 48px; }
+  input, select, textarea { font-size: 18px; }
+}
+/* ================= MOBILE REFINED ================= */
 @media (max-width: 768px) {
 
-  /* ===== SAFE AREA (iOS NOTCH) ===== */
+  /* ===== BODY ===== */
   body {
     padding-top: 110px;
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
     background-attachment: scroll;
   }
 
   /* ===== HEADER ===== */
   .header {
+    height: auto;
     padding: 12px 0;
   }
 
@@ -337,60 +483,51 @@ textarea {
     font-size: 30px;
     top: 18px;
     right: 18px;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
   }
 
   .right {
     display: none;
   }
 
-  /* ===== NAVBAR (SMOOTH SLIDE) ===== */
+  .center {
+    width: 100%;
+    padding: 0;
+  }
+
+  /* ===== NAVBAR ===== */
   .navbar {
-    display: flex;
+    display: none;
     flex-direction: column;
+    background: rgba(0,0,0,0.95);
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(0,0,0,0.96);
-    transform: translateY(-10px);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.35s ease;
     text-align: center;
   }
 
   .navbar.show {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+    display: flex;
   }
 
   .navbar li {
+    font-size: 18px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
   }
 
   .navbar li a {
     display: block;
-    padding: 18px 0;
-    font-size: 18px;
-    -webkit-tap-highlight-color: transparent;
+    padding: 14px 0;
   }
 
   /* ===== HERO ===== */
   .hero {
-    min-height: auto;
-    padding: 40px 16px;
+    padding: 30px 15px;
     justify-content: center;
     text-align: center;
   }
 
-  .hero h1 {
-    line-height: 1.2;
-  }
-
-  /* ===== TITLES ===== */
+  /* ===== HERO TITLES ===== */
   .about-hero h1,
   .services-hero h1,
   .calculator-hero h1,
@@ -403,18 +540,14 @@ textarea {
   .calculator-hero p,
   .contact-hero p {
     font-size: 18px;
-    line-height: 1.7;
-    letter-spacing: 0.3px;
   }
 
   /* ===== FORMS ===== */
   .prominent-form {
+    padding: 26px 18px;
     width: 95%;
     margin: 40px auto;
-    padding: 26px 18px;
     border-radius: 22px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
   }
 
   .prominent-form h2 {
@@ -427,20 +560,11 @@ textarea {
   textarea {
     font-size: 16px;
     padding: 14px;
-    min-height: 52px;
-  }
-
-  input:focus,
-  select:focus,
-  textarea:focus {
-    box-shadow: 0 0 0 2px rgba(255,77,77,0.6);
   }
 
   .prominent-form button {
     font-size: 18px;
     padding: 14px;
-    min-height: 52px;
-    -webkit-tap-highlight-color: transparent;
   }
 
   /* ===== ABOUT ===== */
@@ -472,7 +596,6 @@ textarea {
 
   .timeline-content p {
     font-size: 18px;
-    line-height: 1.6;
   }
 
   /* ===== SERVICES ===== */
@@ -496,7 +619,6 @@ textarea {
   .service-content p,
   .service-content li {
     font-size: 18px;
-    line-height: 1.6;
   }
 
   /* ===== CONTACT ===== */
@@ -520,11 +642,4 @@ textarea {
   .calculator-box {
     width: 100%;
   }
-
-  /* ===== ANIMATIONS (PERFORMANCE) ===== */
-  .fade-up {
-    transition: 0.6s ease;
-    will-change: transform, opacity;
-  }
-
 }
