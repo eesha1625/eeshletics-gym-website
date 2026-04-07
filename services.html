@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eeshletics services — personal training, group classes, modern equipment, nutrition coaching.">
+  <title>Eeshletics | Services</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+  .svc-list { max-width:var(--max-w); margin:0 auto; padding:80px 40px; display:flex; flex-direction:column; gap:90px; }
+  .svc-row  { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
+  .svc-row.rev .ri { order:2; } .svc-row.rev .rt { order:1; }
+  .ri { border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/3; }
+  .ri img { width:100%; height:100%; object-fit:cover; transition:transform 0.55s ease; }
+  .ri:hover img { transform:scale(1.05); }
+  .rt .sn  { font-family:var(--font-display); font-size:80px; font-weight:900; color:var(--cyan); opacity:0.14; line-height:1; }
+  .rt h2   { font-family:var(--font-display); font-size:38px; font-weight:900; letter-spacing:1px; margin-top:-18px; margin-bottom:14px; }
+  .rt p    { color:var(--text2); font-size:15px; line-height:1.9; margin-bottom:22px; }
+  .rt-pts  { display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
+  .rt-pt   { display:flex; align-items:center; gap:10px; font-size:14px; font-weight:500; }
+  .rt-pt::before { content:''; width:20px; height:1px; background:var(--cyan); flex-shrink:0; }
+
+  .classes-grid { max-width:var(--max-w); margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:20px; }
+  .cls-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px; transition:var(--transition); position:relative; overflow:hidden; }
+  .cls-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--cyan),var(--blue)); transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+  .cls-card:hover::after { transform:scaleX(1); }
+  .cls-card:hover { transform:translateY(-6px); border-color:var(--cyan-border); box-shadow:var(--shadow-glow); }
+  .cls-ico  { font-size:34px; margin-bottom:14px; }
+  .cls-card h3 { font-family:var(--font-display); font-size:21px; font-weight:900; letter-spacing:1px; margin-bottom:8px; }
+  .cls-card p  { color:var(--text2); font-size:13px; line-height:1.7; margin-bottom:14px; }
+  .cls-tags { display:flex; flex-wrap:wrap; gap:6px; }
+  .cls-tags span { padding:3px 10px; border-radius:99px; font-size:11px; font-weight:600; background:var(--surface2); color:var(--text3); border:1px solid var(--border2); }
+
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  thead { background:linear-gradient(90deg,var(--cyan),var(--blue)); }
+  thead th { padding:14px 18px; text-align:left; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#070b12; }
+  tbody tr { border-bottom:1px solid var(--border); transition:var(--transition); }
+  tbody tr:hover { background:var(--surface2); }
+  tbody td { padding:14px 18px; color:var(--text2); }
+  tbody td:first-child { font-weight:700; color:var(--text); }
+  .avail { color:var(--success); font-weight:700; }
+  .full  { color:var(--danger);  font-weight:700; }
+
+  @media(max-width:900px){
+    .svc-row { grid-template-columns:1fr; gap:28px; }
+    .svc-row.rev .ri, .svc-row.rev .rt { order:unset; }
+    .svc-list { padding:60px 24px; gap:60px; }
+  }
+  </style>
+</head>
+<body data-page="services">
+<header class="header" id="mainHeader">
+  <a href="index.html" class="logo"><img src="images/dumbbell.png" alt="" width="34">EESH<span class="logo-accent">LETICS</span></a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="index.html" data-nav="home">Home</a><a href="about.html" data-nav="about">About</a><a href="services.html" data-nav="services">Services</a><a href="trainers.html" data-nav="trainers">Trainers</a><a href="pricing.html" data-nav="pricing">Pricing</a><a href="fitness-calculator.html" data-nav="calculator">Calculator</a><a href="contact.html" data-nav="contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☀️</button>
+    <a href="pricing.html" class="btn btn-primary btn-sm">Join Now</a>
+  </div>
+</header>
+
+<main style="padding-top:var(--header-h)">
+  <section class="page-hero">
+    <div class="eyebrow">What We Offer</div>
+    <h1>OUR <span class="hl">SERVICES</span></h1>
+    <p class="subtitle">Professional training, cutting-edge equipment, and complete wellness solutions — all under one roof in Karachi.</p>
+  </section>
+
+  <div class="svc-list">
+    <div class="svc-row reveal">
+      <div class="ri"><img src="images/service1.jpg" alt="Personal Training" loading="lazy"></div>
+      <div class="rt">
+        <div class="sn">01</div>
+        <h2>PERSONAL TRAINING</h2>
+        <p>One-on-one professional coaching designed to help you gain muscle, lose fat, and build confidence with safe, effective workouts tailored precisely to your body and goals.</p>
+        <div class="rt-pts">
+          <div class="rt-pt">NASM & ACE Certified Trainers</div>
+          <div class="rt-pt">Custom Workout & Nutrition Plans</div>
+          <div class="rt-pt">Fat Loss & Muscle Gain Programmes</div>
+          <div class="rt-pt">Weekly Progress Check-ins</div>
+        </div>
+        <a href="trainers.html" class="btn btn-outline">Meet Our Trainers</a>
+      </div>
+    </div>
+    <div class="svc-row rev reveal">
+      <div class="ri"><img src="images/service2.jpg" alt="Modern Equipment" loading="lazy"></div>
+      <div class="rt">
+        <div class="sn">02</div>
+        <h2>MODERN EQUIPMENT</h2>
+        <p>Train with state-of-the-art gym machines and free weights designed for strength, endurance, and peak athletic performance — serviced and maintained weekly.</p>
+        <div class="rt-pts">
+          <div class="rt-pt">Commercial Grade Cardio Machines</div>
+          <div class="rt-pt">Olympic Free Weights & Power Racks</div>
+          <div class="rt-pt">Functional Training & Cable Stations</div>
+          <div class="rt-pt">Recovery Zone & Stretching Area</div>
+        </div>
+        <a href="pricing.html" class="btn btn-outline">View Membership Plans</a>
+      </div>
+    </div>
+    <div class="svc-row reveal">
+      <div class="ri"><img src="images/community.jpg" alt="Group Classes" loading="lazy"></div>
+      <div class="rt">
+        <div class="sn">03</div>
+        <h2>GROUP CLASSES</h2>
+        <p>High-energy sessions led by expert instructors. From HIIT to Yoga, our group classes challenge every fitness level while building real community bonds.</p>
+        <div class="rt-pts">
+          <div class="rt-pt">HIIT, Yoga, Spin, Kickboxing & More</div>
+          <div class="rt-pt">15+ Classes Every Week</div>
+          <div class="rt-pt">All Fitness Levels Welcome</div>
+          <div class="rt-pt">Included in Pro & Elite Plans</div>
+        </div>
+        <a href="pricing.html" class="btn btn-outline">See Pricing</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP CLASSES GRID -->
+  <section class="section-pad" style="background:var(--bg2)">
+    <div class="container">
+      <div class="section-head reveal"><div class="eyebrow">Group Training</div><h2>WEEKLY <span class="text-cyan">CLASSES</span></h2></div>
+      <div class="classes-grid">
+        <div class="cls-card reveal"><div class="cls-ico">⚡</div><h3>HIIT BLAST</h3><p>High-intensity intervals to torch calories and build cardiovascular endurance fast.</p><div class="cls-tags"><span>45 min</span><span>All Levels</span><span>Daily 7AM</span></div></div>
+        <div class="cls-card reveal delay-1"><div class="cls-ico">🧘</div><h3>POWER YOGA</h3><p>Strength-focused yoga blending flexibility, balance, and mindfulness into one session.</p><div class="cls-tags"><span>60 min</span><span>Beginner+</span><span>Mon/Wed/Fri</span></div></div>
+        <div class="cls-card reveal delay-2"><div class="cls-ico">🚴</div><h3>SPIN CYCLE</h3><p>Indoor cycling to high-energy music. Burns up to 600 calories per session.</p><div class="cls-tags"><span>45 min</span><span>Intermediate</span><span>Tue/Thu/Sat</span></div></div>
+        <div class="cls-card reveal delay-3"><div class="cls-ico">🏋️</div><h3>STRENGTH CAMP</h3><p>Barbell-based strength training focusing on compound movements and progressive overload.</p><div class="cls-tags"><span>60 min</span><span>Intermediate</span><span>Mon/Wed/Fri</span></div></div>
+        <div class="cls-card reveal"><div class="cls-ico">🥊</div><h3>KICKBOXING</h3><p>Combat-inspired cardio that builds coordination, agility, and full-body conditioning.</p><div class="cls-tags"><span>50 min</span><span>All Levels</span><span>Tue/Thu</span></div></div>
+        <div class="cls-card reveal delay-1"><div class="cls-ico">🤸</div><h3>MOBILITY & STRETCH</h3><p>Active recovery to improve range of motion and dramatically reduce injury risk.</p><div class="cls-tags"><span>40 min</span><span>All Levels</span><span>Sunday</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE TABLE -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-head reveal"><div class="eyebrow">This Week</div><h2>CLASS <span class="text-cyan">SCHEDULE</span></h2></div>
+      <div class="reveal" style="overflow-x:auto">
+        <table aria-label="Weekly class schedule">
+          <thead><tr><th>Class</th><th>Instructor</th><th>Day(s)</th><th>Time</th><th>Duration</th><th>Availability</th></tr></thead>
+          <tbody>
+            <tr><td>HIIT Blast</td><td>Ahmed Khan</td><td>Mon–Sat</td><td>7:00 AM</td><td>45 min</td><td class="avail">Available</td></tr>
+            <tr><td>Power Yoga</td><td>Sara Malik</td><td>Mon/Wed/Fri</td><td>9:00 AM</td><td>60 min</td><td class="avail">Available</td></tr>
+            <tr><td>Spin Cycle</td><td>Bilal Raza</td><td>Tue/Thu/Sat</td><td>6:30 AM</td><td>45 min</td><td class="full">Full</td></tr>
+            <tr><td>Strength Camp</td><td>Ahmed Khan</td><td>Mon/Wed/Fri</td><td>6:00 PM</td><td>60 min</td><td class="avail">Available</td></tr>
+            <tr><td>Kickboxing</td><td>Hassan Ali</td><td>Tue/Thu</td><td>7:00 PM</td><td>50 min</td><td class="avail">4 left</td></tr>
+            <tr><td>Mobility & Stretch</td><td>Sara Malik</td><td>Sunday</td><td>10:00 AM</td><td>40 min</td><td class="avail">Available</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="text-align:center;margin-top:32px"><a href="contact.html" class="btn btn-outline">Book a Class</a></div>
+    </div>
+  </section>
+
+  <footer><div class="footer-inner">
+    <div class="footer-top">
+      <div><a href="index.html" class="logo" style="font-size:21px"><img src="images/dumbbell.png" alt="" width="26">EESH<span class="logo-accent">LETICS</span></a><p class="footer-brand-desc">Pakistan's premier performance gym.</p><div class="social-row"><a href="#" class="social-btn">📸</a><a href="#" class="social-btn">📘</a><a href="#" class="social-btn">▶️</a></div></div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="trainers.html">Trainers</a></li></ul></div>
+      <div class="footer-col"><h4>Tools</h4><ul><li><a href="fitness-calculator.html">Calculator</a></li><li><a href="dashboard.html">Dashboard</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Message Us</a></li><li><a href="tel:+923001234567">+92 300 1234567</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Eeshletics.</span><span class="portfolio-pill">Portfolio Project</span></div>
+  </div></footer>
+</main>
+<script src="js/script.js"></script>
+</body>
+</html>

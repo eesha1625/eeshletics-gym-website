@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eeshletics | Contact Us</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+  .contact-layout { display:grid; grid-template-columns:1fr 1.5fr; gap:60px; max-width:var(--max-w); margin:0 auto; align-items:start; }
+
+  .ci-title { font-family:var(--font-display); font-size:42px; font-weight:900; letter-spacing:1px; margin-bottom:14px; }
+  .ci-desc  { color:var(--text2); font-size:15px; line-height:1.9; margin-bottom:32px; }
+
+  .ci-details { display:flex; flex-direction:column; gap:14px; margin-bottom:36px; }
+  .ci-row { display:flex; align-items:center; gap:14px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); transition:var(--transition); }
+  .ci-row:hover { border-color:var(--cyan-border); transform:translateX(4px); }
+  .ci-icon { width:44px; height:44px; border-radius:var(--radius-sm); background:var(--cyan-dim); border:1px solid var(--cyan-border); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .ci-row h4 { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--text3); margin-bottom:3px; }
+  .ci-row a, .ci-row span { color:var(--text); font-size:15px; font-weight:500; transition:var(--transition); }
+  .ci-row:hover a { color:var(--cyan); }
+
+  .hours-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; }
+  .hours-head { background:linear-gradient(90deg,var(--cyan),var(--blue)); padding:14px 20px; font-family:var(--font-display); font-size:18px; font-weight:900; letter-spacing:1px; color:#070b12; }
+  .hr-row { display:flex; justify-content:space-between; padding:12px 20px; border-bottom:1px solid var(--border); font-size:14px; }
+  .hr-row:last-child { border-bottom:none; }
+  .hr-day  { color:var(--text2); }
+  .hr-time { font-weight:700; }
+  .hr-row.today { background:var(--cyan-dim); }
+  .hr-row.today .hr-day  { color:var(--cyan); font-weight:600; }
+  .hr-row.today .hr-time { color:var(--cyan); }
+
+  /* FORM CARD */
+  .form-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-xl); padding:40px; position:relative; opacity:1 !important; transform:none !important; }
+  /* sticky on desktop */
+  @media(min-width:961px){ .form-card { position:sticky; top:calc(var(--header-h)+20px); } }
+  .form-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--cyan),var(--blue)); border-radius:var(--radius-xl) var(--radius-xl) 0 0; }
+  .form-card h2 { font-family:var(--font-display); font-size:30px; font-weight:900; letter-spacing:1px; margin-bottom:6px; }
+  .form-card p  { color:var(--text2); font-size:13px; margin-bottom:26px; }
+  #contactForm  { display:flex; flex-direction:column; gap:15px; }
+
+  /* MAP */
+  .map-box { height:320px; background:var(--surface2); border-top:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:var(--text3); font-size:14px; }
+
+  @media(max-width:960px){
+    .contact-layout { grid-template-columns:1fr; }
+    .form-card { position:static; }
+  }
+  </style>
+</head>
+<body data-page="contact">
+<header class="header" id="mainHeader">
+  <a href="index.html" class="logo"><img src="images/dumbbell.png" alt="" width="34">EESH<span class="logo-accent">LETICS</span></a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="index.html" data-nav="home">Home</a><a href="about.html" data-nav="about">About</a><a href="services.html" data-nav="services">Services</a><a href="trainers.html" data-nav="trainers">Trainers</a><a href="pricing.html" data-nav="pricing">Pricing</a><a href="fitness-calculator.html" data-nav="calculator">Calculator</a><a href="contact.html" data-nav="contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☀️</button>
+    <a href="pricing.html" class="btn btn-primary btn-sm">Join Now</a>
+  </div>
+</header>
+
+<main style="padding-top:var(--header-h)">
+  <section class="page-hero">
+    <div class="eyebrow">Get in Touch</div>
+    <h1>CONTACT <span class="hl">US</span></h1>
+    <p class="subtitle">Have a question or ready to join? We respond within 24 hours. WhatsApp preferred for fastest reply.</p>
+  </section>
+
+  <section class="section-pad">
+    <div class="container">
+      <div class="contact-layout">
+        <!-- INFO -->
+        <div>
+          <div class="reveal">
+            <div class="ci-title">LET'S TALK FITNESS</div>
+            <p class="ci-desc">Whether you want to join, ask about our programmes, or book a trainer consultation — reach out through any channel below. We're friendly, we're fast, and we actually reply.</p>
+          </div>
+          <div class="ci-details reveal">
+            <div class="ci-row"><div class="ci-icon">📍</div><div><h4>Location</h4><span>DHA Phase 5, Karachi, Pakistan</span></div></div>
+            <div class="ci-row"><div class="ci-icon">📞</div><div><h4>Phone / WhatsApp</h4><a href="tel:+923001234567">+92 300 1234567</a></div></div>
+            <div class="ci-row"><div class="ci-icon">📧</div><div><h4>Email</h4><a href="/cdn-cgi/l/email-protection#0e676068614e6b6b7d66626b7a676d7d206d6163"><span class="__cf_email__" data-cfemail="640d0a020b240101170c0801100d07174a070b09">[email&#160;protected]</span></a></div></div>
+            <div class="ci-row"><div class="ci-icon">📸</div><div><h4>Instagram</h4><a href="#">@eeshletics</a></div></div>
+          </div>
+          <div class="hours-card reveal">
+            <div class="hours-head">GYM HOURS</div>
+            <div class="hr-row today"><span class="hr-day">Monday – Friday</span><span class="hr-time">6:00 AM – 11:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Saturday</span><span class="hr-time">7:00 AM – 10:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Sunday</span><span class="hr-time">8:00 AM – 8:00 PM</span></div>
+            <div class="hr-row"><span class="hr-day">Public Holidays</span><span class="hr-time">9:00 AM – 6:00 PM</span></div>
+          </div>
+        </div>
+
+        <!-- FORM -->
+        <div class="form-card">
+          <h2>SEND A MESSAGE</h2>
+          <p>Real email delivery via Web3Forms. Get your free key at <strong>web3forms.com</strong> and replace the access_key below.</p>
+          <form id="contactForm" novalidate>
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE">
+            <input type="hidden" name="subject" value="New Eeshletics Enquiry">
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1">
+            <div class="form-row">
+              <div class="form-group"><label for="cName">Full Name</label><input type="text" id="cName" name="name" placeholder="Ahmed Ali" required></div>
+              <div class="form-group"><label for="cPhone">Phone (optional)</label><input type="tel" id="cPhone" name="phone" placeholder="+92 300 …"></div>
+            </div>
+            <div class="form-group"><label for="cEmail">Email Address</label><input type="email" id="cEmail" name="email" placeholder="you@email.com" required></div>
+            <div class="form-group">
+              <label for="cTopic">I'm interested in…</label>
+              <select id="cTopic" name="topic">
+                <option value="">Select a topic</option>
+                <option>Membership / Pricing</option>
+                <option>Personal Training</option>
+                <option>Group Classes</option>
+                <option>Free Trial Visit</option>
+                <option>Corporate / Group Membership</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group"><label for="cMessage">Your Message</label><textarea id="cMessage" name="message" rows="5" placeholder="Tell us how we can help…" required></textarea></div>
+            <button type="submit" class="btn btn-primary w100">Send Message →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <div class="map-box">
+    <span style="font-size:36px">📍</span>
+    <strong style="color:var(--text)">DHA Phase 5, Karachi, Pakistan</strong>
+    <span>Replace this section with a Google Maps embed iframe</span>
+    <!-- <iframe src="https://maps.google.com/maps?q=DHA+Phase+5+Karachi&output=embed" width="100%" height="320" style="border:0" allowfullscreen loading="lazy"></iframe> -->
+  </div>
+
+  <footer><div class="footer-inner">
+    <div class="footer-top">
+      <div><a href="index.html" class="logo" style="font-size:21px"><img src="images/dumbbell.png" alt="" width="26">EESH<span class="logo-accent">LETICS</span></a><p class="footer-brand-desc">Pakistan's premier performance gym.</p><div class="social-row"><a href="#" class="social-btn">📸</a><a href="#" class="social-btn">📘</a><a href="#" class="social-btn">▶️</a></div></div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="trainers.html">Trainers</a></li></ul></div>
+      <div class="footer-col"><h4>Tools</h4><ul><li><a href="fitness-calculator.html">Calculator</a></li><li><a href="dashboard.html">Dashboard</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Message Us</a></li><li><a href="tel:+923001234567">+92 300 1234567</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Eeshletics.</span><span class="portfolio-pill">Portfolio Project</span></div>
+  </div></footer>
+</main>
+<script src="js/script.js"></script>
+</body>
+</html>

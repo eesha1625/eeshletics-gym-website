@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eeshletics | Progress Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+  /* SUMMARY CARDS */
+  .sum-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:36px; }
+  .sum-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; text-align:center; transition:var(--transition); }
+  .sum-card:hover { border-color:var(--cyan-border); transform:translateY(-4px); }
+  .sum-icon { font-size:26px; margin-bottom:10px; }
+  .sum-val  { font-family:var(--font-display); font-size:38px; font-weight:900; color:var(--cyan); line-height:1; }
+  .sum-lbl  { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--text3); margin-top:6px; }
+
+  /* WEIGHT CHART */
+  .chart-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px; margin-bottom:36px; }
+  .chart-card h3 { font-family:var(--font-display); font-size:22px; font-weight:900; letter-spacing:1px; margin-bottom:4px; }
+  .chart-card p  { color:var(--text3); font-size:12px; margin-bottom:16px; }
+  .bar-chart { height:100px; display:flex; align-items:flex-end; gap:4px; }
+  .bc-bar { flex:1; min-width:10px; border-radius:4px 4px 0 0; background:var(--cyan-dim); border:1px solid var(--cyan-border); transition:var(--transition); cursor:default; position:relative; }
+  .bc-bar:hover { background:var(--cyan-glow); }
+  .bc-bar .bc-tip { position:absolute; bottom:calc(100%+4px); left:50%; transform:translateX(-50%); background:var(--surface2); padding:3px 8px; border-radius:4px; font-size:10px; white-space:nowrap; display:none; border:1px solid var(--cyan-border); color:var(--cyan); }
+  .bc-bar:hover .bc-tip { display:block; }
+
+  /* LOG FORM */
+  .log-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-xl); padding:36px; margin-bottom:36px; }
+  .log-card::before { content:''; display:block; width:40px; height:3px; background:var(--cyan); border-radius:2px; margin-bottom:20px; }
+  .log-card h2 { font-family:var(--font-display); font-size:28px; font-weight:900; letter-spacing:1px; margin-bottom:6px; }
+  .log-card p  { color:var(--text2); font-size:13px; margin-bottom:24px; }
+  .log-inputs-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:13px; margin-bottom:16px; }
+  .log-btns { display:flex; gap:12px; flex-wrap:wrap; }
+
+  /* GOALS */
+  .goals-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px; margin-bottom:36px; }
+  .goals-card h3 { font-family:var(--font-display); font-size:22px; font-weight:900; letter-spacing:1px; margin-bottom:22px; }
+  .goal-item   { margin-bottom:20px; }
+  .goal-header { display:flex; justify-content:space-between; align-items:center; font-size:14px; margin-bottom:8px; }
+  .goal-lbl    { font-weight:600; }
+  .goal-val    { color:var(--text3); font-size:13px; }
+  .prog-track  { height:6px; background:var(--surface2); border-radius:3px; overflow:hidden; }
+  .prog-fill   { height:100%; background:linear-gradient(90deg,var(--cyan),var(--blue)); border-radius:3px; transition:width 0.9s cubic-bezier(0.4,0,0.2,1); }
+
+  /* HISTORY TABLE */
+  .hist-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px; }
+
+  /* TIPS */
+  .tips-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; max-width:var(--max-w); margin:0 auto; }
+  .tip-card  { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:26px; transition:var(--transition); }
+  .tip-card:hover { border-color:var(--cyan-border); transform:translateY(-5px); box-shadow:var(--shadow-glow); }
+  .tip-ico  { font-size:28px; margin-bottom:12px; }
+  .tip-card h4 { font-family:var(--font-display); font-size:18px; font-weight:900; letter-spacing:1px; margin-bottom:8px; }
+  .tip-card p  { color:var(--text2); font-size:13.5px; line-height:1.8; }
+
+  @media(max-width:900px){ .sum-grid { grid-template-columns:1fr 1fr; } }
+  @media(max-width:480px){ .sum-grid { grid-template-columns:1fr 1fr; } }
+  </style>
+</head>
+<body data-page="dashboard">
+<header class="header" id="mainHeader">
+  <a href="index.html" class="logo"><img src="images/dumbbell.png" alt="" width="34">EESH<span class="logo-accent">LETICS</span></a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="index.html" data-nav="home">Home</a><a href="about.html" data-nav="about">About</a><a href="services.html" data-nav="services">Services</a><a href="trainers.html" data-nav="trainers">Trainers</a><a href="pricing.html" data-nav="pricing">Pricing</a><a href="fitness-calculator.html" data-nav="calculator">Calculator</a><a href="contact.html" data-nav="contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☀️</button>
+    <a href="pricing.html" class="btn btn-primary btn-sm">Join Now</a>
+  </div>
+</header>
+
+<main style="padding-top:var(--header-h)">
+  <section class="page-hero">
+    <div class="eyebrow">Your Journey</div>
+    <h1>PROGRESS <span class="hl">DASHBOARD</span></h1>
+    <p class="subtitle">Track every workout, log your weight, and watch your transformation unfold — entry by entry.</p>
+  </section>
+
+  <section class="section-pad">
+    <div class="container">
+
+      <!-- SUMMARY CARDS -->
+      <div class="sum-grid">
+        <div class="sum-card reveal"><div class="sum-icon">📅</div><div class="sum-val" id="sumEntries">0</div><div class="sum-lbl">Total Entries</div></div>
+        <div class="sum-card reveal delay-1"><div class="sum-icon">⚖️</div><div class="sum-val" id="sumWeight">—</div><div class="sum-lbl">Latest Weight (kg)</div></div>
+        <div class="sum-card reveal delay-2"><div class="sum-icon">🔥</div><div class="sum-val" id="sumCalories">—</div><div class="sum-lbl">Total Cal. Burned</div></div>
+        <div class="sum-card reveal delay-3"><div class="sum-icon">⏱️</div><div class="sum-val" id="sumWorkout">—</div><div class="sum-lbl">Total Minutes</div></div>
+      </div>
+
+      <!-- WEIGHT CHART -->
+      <div class="chart-card reveal">
+        <h3>WEIGHT TREND</h3>
+        <p>Last 12 entries — hover for values</p>
+        <div class="bar-chart" id="weightBars"></div>
+      </div>
+
+      <!-- LOG FORM -->
+      <div class="log-card reveal">
+        <h2>LOG TODAY'S WORKOUT</h2>
+        <p>Takes 30 seconds. Consistency builds the data that reveals your real progress over time.</p>
+        <form id="progressForm" novalidate>
+          <div class="log-inputs-grid">
+            <div class="form-group"><label for="logWeight">Weight (kg) *</label><input type="number" id="logWeight" placeholder="70.5" step="0.1"></div>
+            <div class="form-group"><label for="logWorkout">Duration (min)</label><input type="number" id="logWorkout" placeholder="60"></div>
+            <div class="form-group"><label for="logCal">Cal. Burned</label><input type="number" id="logCal" placeholder="450"></div>
+            <div class="form-group"><label for="logWater">Water (litres)</label><input type="number" id="logWater" placeholder="2.5" step="0.1"></div>
+          </div>
+          <div class="form-group mb-lg">
+            <label for="logNote">Session Notes (optional)</label>
+            <input type="text" id="logNote" placeholder="Hit a new squat PR today 🎉">
+          </div>
+          <div class="log-btns">
+            <button type="button" class="btn btn-primary" onclick="logProgress()">Save Entry ✓</button>
+            <a href="fitness-calculator.html" class="btn btn-ghost">Open Calculator</a>
+          </div>
+        </form>
+      </div>
+
+      <!-- WEEKLY GOALS -->
+      <div class="goals-card reveal">
+        <h3>WEEKLY GOALS</h3>
+        <div class="goal-item">
+          <div class="goal-header"><span class="goal-lbl">Workout Days</span><span class="goal-val" id="gDaysVal">0 / 5</span></div>
+          <div class="prog-track"><div class="prog-fill" id="gDaysFill" style="width:0%"></div></div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-header"><span class="goal-lbl">Total Minutes</span><span class="goal-val" id="gMinsVal">0 / 300</span></div>
+          <div class="prog-track"><div class="prog-fill" id="gMinsFill" style="width:0%"></div></div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-header"><span class="goal-lbl">Calories Burned</span><span class="goal-val" id="gCalsVal">0 / 2,000</span></div>
+          <div class="prog-track"><div class="prog-fill" id="gCalsFill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- HISTORY TABLE -->
+      <div class="hist-card reveal">
+        <div id="progressHistory"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section class="section-pad" style="background:var(--bg2)">
+    <div class="container">
+      <div class="section-head reveal"><div class="eyebrow">From Our Coaches</div><h2>MAXIMIZE YOUR <span class="text-cyan">RESULTS</span></h2></div>
+      <div class="tips-grid">
+        <div class="tip-card reveal"><div class="tip-ico">📊</div><h4>TRACK CONSISTENTLY</h4><p>Data beats feelings. Log every session — even bad ones. Patterns emerge after 3–4 weeks and tell you precisely what's working.</p></div>
+        <div class="tip-card reveal delay-1"><div class="tip-ico">💧</div><h4>HYDRATION FIRST</h4><p>A 2% drop in hydration reduces performance by 10–20%. Aim for 35ml per kg of bodyweight daily, more on training days.</p></div>
+        <div class="tip-card reveal delay-2"><div class="tip-ico">😴</div><h4>SLEEP = GAINS</h4><p>Muscle is built during sleep, not training. 7–9 hours triggers peak growth hormone release. Shortchange sleep, shortchange results.</p></div>
+        <div class="tip-card reveal delay-3"><div class="tip-ico">🥗</div><h4>PROTEIN PRIORITY</h4><p>Aim for 1.6–2.2g of protein per kg of bodyweight daily. Hit your protein target first, then fill remaining calories with carbs and fats.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="footer-inner">
+    <div class="footer-top">
+      <div><a href="index.html" class="logo" style="font-size:21px"><img src="images/dumbbell.png" alt="" width="26">EESH<span class="logo-accent">LETICS</span></a><p class="footer-brand-desc">Pakistan's premier performance gym.</p><div class="social-row"><a href="#" class="social-btn">📸</a><a href="#" class="social-btn">📘</a><a href="#" class="social-btn">▶️</a></div></div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="trainers.html">Trainers</a></li></ul></div>
+      <div class="footer-col"><h4>Tools</h4><ul><li><a href="fitness-calculator.html">Calculator</a></li><li><a href="dashboard.html">Dashboard</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Message Us</a></li><li><a href="tel:+923001234567">+92 300 1234567</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Eeshletics.</span><span class="portfolio-pill">Portfolio Project</span></div>
+  </div></footer>
+</main>
+<script src="js/script.js"></script>
+</body>
+</html>

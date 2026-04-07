@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eeshletics | Our Trainers</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+  .trainers-grid { max-width:var(--max-w); margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:28px; }
+
+  .tr-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-xl); overflow:hidden; transition:var(--transition); }
+  .tr-card:hover { border-color:var(--cyan-border); transform:translateY(-8px); box-shadow:var(--shadow-glow); }
+
+  .tr-photo { aspect-ratio:3/4; overflow:hidden; position:relative; }
+  .tr-photo img { width:100%; height:100%; object-fit:cover; object-position:top; transition:transform 0.55s ease; }
+  .tr-card:hover .tr-photo img { transform:scale(1.06); }
+  .tr-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(7,11,18,0.96) 0%, transparent 55%); }
+  .tr-overlay-text { position:absolute; bottom:0; left:0; right:0; padding:24px 26px; }
+  .tr-role { display:inline-block; padding:4px 12px; border-radius:99px; background:var(--cyan); color:#070b12; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:8px; }
+  .tr-name  { font-family:var(--font-display); font-size:30px; font-weight:900; letter-spacing:1px; line-height:1; }
+  .tr-spec  { color:var(--text2); font-size:13px; margin-top:4px; }
+
+  .tr-body  { padding:24px 26px; }
+  .tr-stats { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+  .ts-cell  { background:var(--surface2); border-radius:var(--radius-sm); padding:12px; text-align:center; }
+  .ts-val   { font-family:var(--font-display); font-size:26px; font-weight:900; color:var(--cyan); }
+  .ts-lbl   { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:var(--text3); font-weight:700; margin-top:3px; }
+
+  .tr-bio   { color:var(--text2); font-size:13.5px; line-height:1.8; margin-bottom:16px; }
+  .tr-tags  { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:20px; }
+  .tr-tag   { padding:5px 12px; border-radius:99px; font-size:11px; font-weight:700; background:var(--cyan-dim); color:var(--cyan); border:1px solid var(--cyan-border); }
+
+  .tr-sched h5 { font-size:10px; text-transform:uppercase; letter-spacing:2px; color:var(--text3); font-weight:700; margin-bottom:10px; }
+  .sched-slot { display:flex; justify-content:space-between; align-items:center; padding:9px 13px; background:var(--surface2); border-radius:var(--radius-sm); border:1px solid var(--border); margin-bottom:7px; font-size:13px; }
+  .ss-day  { font-weight:600; }
+  .ss-time { color:var(--text3); }
+
+  .phil-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px; max-width:var(--max-w); margin:0 auto; }
+  .ph-card  { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:32px; transition:var(--transition); }
+  .ph-card:hover { border-color:var(--cyan-border); box-shadow:var(--shadow-glow); transform:translateY(-5px); }
+  .ph-num  { font-family:var(--font-display); font-size:60px; font-weight:900; color:var(--cyan); opacity:0.18; line-height:1; }
+  .ph-card h3 { font-family:var(--font-display); font-size:20px; font-weight:900; letter-spacing:1px; margin-top:-14px; margin-bottom:12px; }
+  .ph-card p  { color:var(--text2); font-size:13.5px; line-height:1.8; }
+
+  @media(max-width:900px){ .trainers-grid { grid-template-columns:1fr; max-width:460px; margin:0 auto; } }
+  </style>
+</head>
+<body data-page="trainers">
+<header class="header" id="mainHeader">
+  <a href="index.html" class="logo"><img src="images/dumbbell.png" alt="" width="34">EESH<span class="logo-accent">LETICS</span></a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="index.html" data-nav="home">Home</a><a href="about.html" data-nav="about">About</a><a href="services.html" data-nav="services">Services</a><a href="trainers.html" data-nav="trainers">Trainers</a><a href="pricing.html" data-nav="pricing">Pricing</a><a href="fitness-calculator.html" data-nav="calculator">Calculator</a><a href="contact.html" data-nav="contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☀️</button>
+    <a href="pricing.html" class="btn btn-primary btn-sm">Join Now</a>
+  </div>
+</header>
+
+<main style="padding-top:var(--header-h)">
+  <section class="page-hero">
+    <div class="eyebrow">The Experts</div>
+    <h1>MEET OUR <span class="hl">TRAINERS</span></h1>
+    <p class="subtitle">12 certified coaches. One shared mission: your transformation. Handpicked for expertise, passion, and measurable results.</p>
+  </section>
+
+  <section class="section-pad">
+    <div class="container">
+      <div class="trainers-grid">
+
+        <article class="tr-card reveal">
+          <div class="tr-photo">
+            <img src="images/service1.jpg" alt="Ahmed Khan — Head Trainer" loading="lazy">
+            <div class="tr-overlay">
+              <div class="tr-overlay-text">
+                <div class="tr-role">Head Trainer</div>
+                <div class="tr-name">AHMED KHAN</div>
+                <div class="tr-spec">Strength & Conditioning Specialist</div>
+              </div>
+            </div>
+          </div>
+          <div class="tr-body">
+            <div class="tr-stats">
+              <div class="ts-cell"><div class="ts-val">8+</div><div class="ts-lbl">Years Exp.</div></div>
+              <div class="ts-cell"><div class="ts-val">300+</div><div class="ts-lbl">Clients</div></div>
+            </div>
+            <p class="tr-bio">Ahmed is our Head Trainer and NASM-certified strength specialist. He's transformed hundreds of bodies through evidence-based programming and relentless accountability coaching.</p>
+            <div class="tr-tags">
+              <span class="tr-tag">Powerlifting</span><span class="tr-tag">Fat Loss</span><span class="tr-tag">Nutrition</span><span class="tr-tag">HIIT</span>
+            </div>
+            <div class="tr-sched">
+              <h5>Available Sessions</h5>
+              <div class="sched-slot"><span class="ss-day">Mon / Wed / Fri</span><span class="ss-time">7AM – 2PM</span></div>
+              <div class="sched-slot"><span class="ss-day">Saturday</span><span class="ss-time">9AM – 1PM</span></div>
+            </div>
+            <a href="contact.html" class="btn btn-outline w100 mt-sm">Book a Session</a>
+          </div>
+        </article>
+
+        <article class="tr-card reveal delay-1">
+          <div class="tr-photo">
+            <img src="images/service2.jpg" alt="Sara Malik — Yoga Coach" loading="lazy">
+            <div class="tr-overlay">
+              <div class="tr-overlay-text">
+                <div class="tr-role">Yoga & Wellness</div>
+                <div class="tr-name">SARA MALIK</div>
+                <div class="tr-spec">Yoga & Mobility Coach</div>
+              </div>
+            </div>
+          </div>
+          <div class="tr-body">
+            <div class="tr-stats">
+              <div class="ts-cell"><div class="ts-val">5+</div><div class="ts-lbl">Years Exp.</div></div>
+              <div class="ts-cell"><div class="ts-val">150+</div><div class="ts-lbl">Clients</div></div>
+            </div>
+            <p class="tr-bio">Sara is an RYT-500 certified yoga instructor and mobility specialist. Her sessions bridge athletic performance and mental wellness, reducing injury risk significantly.</p>
+            <div class="tr-tags">
+              <span class="tr-tag">Power Yoga</span><span class="tr-tag">Mobility</span><span class="tr-tag">Recovery</span><span class="tr-tag">Mindfulness</span>
+            </div>
+            <div class="tr-sched">
+              <h5>Available Sessions</h5>
+              <div class="sched-slot"><span class="ss-day">Mon / Wed / Fri</span><span class="ss-time">9AM – 1PM</span></div>
+              <div class="sched-slot"><span class="ss-day">Sunday</span><span class="ss-time">10AM – 12PM</span></div>
+            </div>
+            <a href="contact.html" class="btn btn-outline w100 mt-sm">Book a Session</a>
+          </div>
+        </article>
+
+        <article class="tr-card reveal delay-2">
+          <div class="tr-photo">
+            <img src="images/community.jpg" alt="Bilal Raza — Cardio Coach" loading="lazy">
+            <div class="tr-overlay">
+              <div class="tr-overlay-text">
+                <div class="tr-role">Cardio Specialist</div>
+                <div class="tr-name">BILAL RAZA</div>
+                <div class="tr-spec">Cardio & HIIT Coach</div>
+              </div>
+            </div>
+          </div>
+          <div class="tr-body">
+            <div class="tr-stats">
+              <div class="ts-cell"><div class="ts-val">6+</div><div class="ts-lbl">Years Exp.</div></div>
+              <div class="ts-cell"><div class="ts-val">200+</div><div class="ts-lbl">Clients</div></div>
+            </div>
+            <p class="tr-bio">Bilal is our certified spin instructor and HIIT specialist. His Spin Cycle classes are consistently the most popular in the gym — full most weeks.</p>
+            <div class="tr-tags">
+              <span class="tr-tag">Spin Cycle</span><span class="tr-tag">HIIT</span><span class="tr-tag">Endurance</span><span class="tr-tag">Weight Loss</span>
+            </div>
+            <div class="tr-sched">
+              <h5>Available Sessions</h5>
+              <div class="sched-slot"><span class="ss-day">Tue / Thu / Sat</span><span class="ss-time">6AM – 12PM</span></div>
+              <div class="sched-slot"><span class="ss-day">Wednesday</span><span class="ss-time">5PM – 8PM</span></div>
+            </div>
+            <a href="contact.html" class="btn btn-outline w100 mt-sm">Book a Session</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAINING PHILOSOPHY -->
+  <section class="section-pad" style="background:var(--bg2)">
+    <div class="container">
+      <div class="section-head reveal"><div class="eyebrow">How We Train</div><h2>TRAINING <span class="text-cyan">PHILOSOPHY</span></h2></div>
+      <div class="phil-grid">
+        <div class="ph-card reveal"><div class="ph-num">01</div><h3>ASSESS FIRST</h3><p>Every new client receives a full fitness assessment before training begins. We learn your body, history, and goals before prescribing a single rep.</p></div>
+        <div class="ph-card reveal delay-1"><div class="ph-num">02</div><h3>PROGRESSIVE OVERLOAD</h3><p>Results come from consistent progressive overload. We track every rep, set, and weight to guarantee you're always moving forward — never spinning wheels.</p></div>
+        <div class="ph-card reveal delay-2"><div class="ph-num">03</div><h3>NUTRITION MATTERS</h3><p>Training without nutrition is a car without fuel. All our trainers integrate practical nutritional guidance into every programme from day one.</p></div>
+        <div class="ph-card reveal delay-3"><div class="ph-num">04</div><h3>RECOVERY IS TRAINING</h3><p>Sleep, mobility, and rest are not optional extras — they're where progress happens. We build recovery into every programme and track readiness weekly.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-pad ta-c" style="background:var(--surface)">
+    <div class="section-head reveal"><div class="eyebrow">Get Started</div><h2>READY TO WORK WITH<br><span class="text-cyan">THE BEST?</span></h2><p>Book a free consultation and start your transformation today.</p></div>
+    <a href="contact.html" class="btn btn-primary btn-lg reveal">Book Free Consultation</a>
+  </section>
+
+  <footer><div class="footer-inner">
+    <div class="footer-top">
+      <div><a href="index.html" class="logo" style="font-size:21px"><img src="images/dumbbell.png" alt="" width="26">EESH<span class="logo-accent">LETICS</span></a><p class="footer-brand-desc">Pakistan's premier performance gym.</p><div class="social-row"><a href="#" class="social-btn">📸</a><a href="#" class="social-btn">📘</a><a href="#" class="social-btn">▶️</a></div></div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="trainers.html">Trainers</a></li></ul></div>
+      <div class="footer-col"><h4>Tools</h4><ul><li><a href="fitness-calculator.html">Calculator</a></li><li><a href="dashboard.html">Dashboard</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Message Us</a></li><li><a href="tel:+923001234567">+92 300 1234567</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Eeshletics.</span><span class="portfolio-pill">Portfolio Project</span></div>
+  </div></footer>
+</main>
+<script src="js/script.js"></script>
+</body>
+</html>

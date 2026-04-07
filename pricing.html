@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eeshletics | Membership Plans</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+  /* BILLING TOGGLE */
+  .billing-row { display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:56px; font-size:14px; font-weight:500; }
+  .tog-track { width:52px; height:28px; border-radius:99px; background:var(--surface2); border:1px solid var(--border2); cursor:pointer; position:relative; transition:var(--transition); }
+  .tog-track::after { content:''; position:absolute; top:4px; left:4px; width:18px; height:18px; border-radius:50%; background:var(--text3); transition:var(--transition); }
+  .tog-track.active { background:var(--cyan); border-color:var(--cyan); box-shadow:0 0 16px var(--cyan-glow); }
+  .tog-track.active::after { left:28px; background:#070b12; }
+  .save-pill { padding:3px 10px; border-radius:99px; background:var(--cyan); color:#070b12; font-size:11px; font-weight:800; letter-spacing:0.5px; }
+
+  /* PLANS */
+  .plans-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:1080px; margin:0 auto; align-items:start; }
+  .plan-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-xl); padding:36px 30px; position:relative; transition:var(--transition); }
+  .plan-card:hover { transform:translateY(-6px); }
+  .plan-card.featured { border-color:var(--cyan); box-shadow:0 0 0 1px var(--cyan), var(--shadow-glow); transform:translateY(-10px); }
+  .plan-card.featured:hover { transform:translateY(-16px); }
+  .popular-flag { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:linear-gradient(90deg,var(--cyan),var(--blue)); color:#070b12; padding:5px 18px; border-radius:99px; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:1.5px; white-space:nowrap; }
+
+  .pname    { font-family:var(--font-display); font-size:34px; font-weight:900; letter-spacing:2px; margin-bottom:6px; }
+  .ptagline { color:var(--text3); font-size:13px; margin-bottom:26px; }
+  .ppricerow { display:flex; align-items:flex-end; gap:4px; margin-bottom:4px; }
+  .pcur { font-size:16px; font-weight:700; color:var(--text3); padding-bottom:7px; }
+  .pval { font-family:var(--font-display); font-size:62px; font-weight:900; line-height:1; }
+  .pper { color:var(--text3); font-size:13px; padding-bottom:9px; }
+  .plan-card.featured .pval { color:var(--cyan); }
+  .pnote  { color:var(--text3); font-size:12px; margin-bottom:26px; }
+  .pdiv   { height:1px; background:var(--border); margin:22px 0; }
+  .pflts  { display:flex; flex-direction:column; gap:12px; margin-bottom:30px; }
+  .pflt   { display:flex; align-items:flex-start; gap:10px; font-size:14px; }
+  .pflt .ck { color:var(--cyan);  flex-shrink:0; font-weight:700; margin-top:1px; }
+  .pflt .cx { color:var(--text3); flex-shrink:0; margin-top:1px; }
+  .pflt.off { color:var(--text3); }
+
+  /* COMPARE */
+  .compare-tbl { width:100%; border-collapse:collapse; font-size:13.5px; }
+  .compare-tbl th { padding:15px 18px; text-align:center; font-family:var(--font-display); font-size:20px; font-weight:900; letter-spacing:1px; border-bottom:2px solid var(--border); }
+  .compare-tbl th:first-child { text-align:left; font-size:12px; font-family:var(--font-body); text-transform:uppercase; letter-spacing:2px; color:var(--text3); }
+  .compare-tbl th.fc { color:var(--cyan); }
+  .compare-tbl td { padding:13px 18px; text-align:center; border-bottom:1px solid var(--border); color:var(--text2); }
+  .compare-tbl td:first-child { text-align:left; }
+  .compare-tbl tr:hover td { background:var(--surface2); }
+  .yes { color:var(--cyan);    font-size:18px; font-weight:700; }
+  .no  { color:var(--text3);  font-size:16px; }
+
+  /* FAQ */
+  .faq-list { max-width:700px; margin:0 auto; display:flex; flex-direction:column; gap:10px; }
+  .faq-item { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+  .faq-q { padding:17px 22px; font-weight:600; cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:var(--transition); font-size:15px; }
+  .faq-q:hover { color:var(--cyan); }
+  .faq-q .arr { transition:transform 0.3s ease; }
+  .faq-item.open .faq-q { color:var(--cyan); border-bottom:1px solid var(--border); }
+  .faq-item.open .faq-q .arr { transform:rotate(180deg); }
+  .faq-a { padding:0 22px; max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.3s ease; color:var(--text2); font-size:14px; line-height:1.8; }
+  .faq-item.open .faq-a { max-height:200px; padding:16px 22px; }
+
+  @media(max-width:900px){ .plans-grid { grid-template-columns:1fr; max-width:440px; margin:0 auto; } .plan-card.featured { transform:none; } }
+  </style>
+</head>
+<body data-page="pricing">
+<header class="header" id="mainHeader">
+  <a href="index.html" class="logo"><img src="images/dumbbell.png" alt="" width="34">EESH<span class="logo-accent">LETICS</span></a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="index.html" data-nav="home">Home</a><a href="about.html" data-nav="about">About</a><a href="services.html" data-nav="services">Services</a><a href="trainers.html" data-nav="trainers">Trainers</a><a href="pricing.html" data-nav="pricing">Pricing</a><a href="fitness-calculator.html" data-nav="calculator">Calculator</a><a href="contact.html" data-nav="contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☀️</button>
+    <a href="#plans" class="btn btn-primary btn-sm">Join Now</a>
+  </div>
+</header>
+
+<main style="padding-top:var(--header-h)">
+  <section class="page-hero">
+    <div class="eyebrow">Invest in Yourself</div>
+    <h1>MEMBERSHIP <span class="hl">PLANS</span></h1>
+    <p class="subtitle">Transparent pricing. Zero hidden fees. Every plan includes full gym access, locker rooms, and our member app.</p>
+  </section>
+
+  <section class="section-pad" id="plans">
+    <div class="container">
+      <!-- BILLING TOGGLE -->
+      <div class="billing-row reveal">
+        <span>Monthly</span>
+        <button class="tog-track" id="billingToggle" aria-pressed="false" aria-label="Toggle annual billing"></button>
+        <span id="billingLabel">Annual</span>
+        <span class="save-pill">Save 20%</span>
+      </div>
+
+      <div class="plans-grid">
+        <!-- STARTER -->
+        <div class="plan-card reveal">
+          <div class="pname">STARTER</div>
+          <div class="ptagline">Perfect for getting started</div>
+          <div class="ppricerow">
+            <span class="pcur">PKR</span>
+            <span class="pval" data-monthly="3,500" data-annual="2,800">3,500</span>
+            <span class="pper">/mo</span>
+          </div>
+          <p class="pnote">Billed monthly · cancel anytime</p>
+          <a href="contact.html" class="btn btn-outline w100">Get Started</a>
+          <div class="pdiv"></div>
+          <div class="pflts">
+            <div class="pflt"><span class="ck">✓</span> Gym Access (6AM–10PM)</div>
+            <div class="pflt"><span class="ck">✓</span> Locker Room & Showers</div>
+            <div class="pflt"><span class="ck">✓</span> Free BMI Assessment</div>
+            <div class="pflt"><span class="ck">✓</span> Cardio Zone Access</div>
+            <div class="pflt off"><span class="cx">✗</span> Personal Trainer</div>
+            <div class="pflt off"><span class="cx">✗</span> Group Classes</div>
+            <div class="pflt off"><span class="cx">✗</span> Nutrition Consultation</div>
+          </div>
+        </div>
+        <!-- PRO (featured) -->
+        <div class="plan-card featured reveal delay-1">
+          <div class="popular-flag">Most Popular</div>
+          <div class="pname">PRO</div>
+          <div class="ptagline">For serious results</div>
+          <div class="ppricerow">
+            <span class="pcur">PKR</span>
+            <span class="pval" data-monthly="6,500" data-annual="5,200">6,500</span>
+            <span class="pper">/mo</span>
+          </div>
+          <p class="pnote">Billed monthly · cancel anytime</p>
+          <a href="contact.html" class="btn btn-primary w100">Join Pro</a>
+          <div class="pdiv"></div>
+          <div class="pflts">
+            <div class="pflt"><span class="ck">✓</span> 24/7 Gym Access</div>
+            <div class="pflt"><span class="ck">✓</span> Locker Room & Showers</div>
+            <div class="pflt"><span class="ck">✓</span> 4 PT Sessions / month</div>
+            <div class="pflt"><span class="ck">✓</span> All Group Classes</div>
+            <div class="pflt"><span class="ck">✓</span> Nutrition Consultation (1×/mo)</div>
+            <div class="pflt"><span class="ck">✓</span> Progress Dashboard</div>
+            <div class="pflt off"><span class="cx">✗</span> Unlimited PT Sessions</div>
+          </div>
+        </div>
+        <!-- ELITE -->
+        <div class="plan-card reveal delay-2">
+          <div class="pname">ELITE</div>
+          <div class="ptagline">The full experience</div>
+          <div class="ppricerow">
+            <span class="pcur">PKR</span>
+            <span class="pval" data-monthly="10,000" data-annual="8,000">10,000</span>
+            <span class="pper">/mo</span>
+          </div>
+          <p class="pnote">Billed monthly · cancel anytime</p>
+          <a href="contact.html" class="btn btn-outline w100">Go Elite</a>
+          <div class="pdiv"></div>
+          <div class="pflts">
+            <div class="pflt"><span class="ck">✓</span> Everything in Pro</div>
+            <div class="pflt"><span class="ck">✓</span> Unlimited PT Sessions</div>
+            <div class="pflt"><span class="ck">✓</span> Custom Monthly Diet Plan</div>
+            <div class="pflt"><span class="ck">✓</span> Body Composition Scanning</div>
+            <div class="pflt"><span class="ck">✓</span> Priority Class Booking</div>
+            <div class="pflt"><span class="ck">✓</span> 15% Supplement Discounts</div>
+            <div class="pflt"><span class="ck">✓</span> 2 Guest Passes / month</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="section-pad" style="background:var(--bg2); padding-top:0">
+    <div class="container">
+      <div class="section-head reveal"><div class="eyebrow">Side by Side</div><h2>FULL <span class="text-cyan">COMPARISON</span></h2></div>
+      <div class="reveal" style="overflow-x:auto">
+        <table class="compare-tbl" aria-label="Plan comparison">
+          <thead><tr><th>Feature</th><th>Starter</th><th class="fc">Pro ⚡</th><th>Elite</th></tr></thead>
+          <tbody>
+            <tr><td>Gym Access Hours</td><td>6AM–10PM</td><td>24/7</td><td>24/7</td></tr>
+            <tr><td>Locker Room</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>Fitness Assessment</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>Personal Trainer</td><td class="no">–</td><td>4 / month</td><td>Unlimited</td></tr>
+            <tr><td>Group Classes</td><td class="no">–</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>Nutrition Consult</td><td class="no">–</td><td>1 / month</td><td>Unlimited</td></tr>
+            <tr><td>Custom Diet Plan</td><td class="no">–</td><td class="no">–</td><td class="yes">✓</td></tr>
+            <tr><td>Body Scan</td><td class="no">–</td><td class="no">–</td><td class="yes">✓</td></tr>
+            <tr><td>Supplement Discount</td><td class="no">–</td><td class="no">–</td><td>15% off</td></tr>
+            <tr><td>Guest Passes</td><td class="no">–</td><td class="no">–</td><td>2 / month</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-head reveal"><div class="eyebrow">Questions</div><h2>FREQUENTLY ASKED <span class="text-cyan">QUESTIONS</span></h2></div>
+      <div class="faq-list reveal">
+        <div class="faq-item"><div class="faq-q">Can I cancel my membership anytime? <span class="arr">▾</span></div><div class="faq-a">Yes — all plans are month-to-month. Cancel anytime with 7 days notice before your next billing date. No cancellation fees whatsoever.</div></div>
+        <div class="faq-item"><div class="faq-q">Is there a joining or registration fee? <span class="arr">▾</span></div><div class="faq-a">No joining fee for Starter. Pro and Elite have a one-time PKR 500 registration fee covering your member card and initial fitness assessment.</div></div>
+        <div class="faq-item"><div class="faq-q">Can I freeze my membership if I travel? <span class="arr">▾</span></div><div class="faq-a">Yes. Pro and Elite members can freeze for up to 30 days per year at no cost. Starter members can freeze for up to 15 days.</div></div>
+        <div class="faq-item"><div class="faq-q">How do I book personal training sessions? <span class="arr">▾</span></div><div class="faq-a">Sessions can be booked via WhatsApp, the contact page, or in person at the front desk. We recommend booking 48 hours in advance for your preferred time slot.</div></div>
+        <div class="faq-item"><div class="faq-q">Is there a free trial before committing? <span class="arr">▾</span></div><div class="faq-a">Absolutely. All new members receive a 3-day free trial to experience the full gym before choosing a membership plan. Contact us to claim yours.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="footer-inner">
+    <div class="footer-top">
+      <div><a href="index.html" class="logo" style="font-size:21px"><img src="images/dumbbell.png" alt="" width="26">EESH<span class="logo-accent">LETICS</span></a><p class="footer-brand-desc">Pakistan's premier performance gym.</p><div class="social-row"><a href="#" class="social-btn">📸</a><a href="#" class="social-btn">📘</a><a href="#" class="social-btn">▶️</a></div></div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="trainers.html">Trainers</a></li></ul></div>
+      <div class="footer-col"><h4>Tools</h4><ul><li><a href="fitness-calculator.html">Calculator</a></li><li><a href="dashboard.html">Dashboard</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Message Us</a></li><li><a href="tel:+923001234567">+92 300 1234567</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Eeshletics.</span><span class="portfolio-pill">Portfolio Project</span></div>
+  </div></footer>
+</main>
+<script src="js/script.js"></script>
+</body>
+</html>

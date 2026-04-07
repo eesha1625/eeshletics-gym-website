@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Eeshletics story — from a small gym with a big dream to Pakistan's premier performance brand.">
+  <title>Eeshletics | Our Story</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+  /* ── ABOUT-ONLY ──────────────────────────────────────────────── */
+  .origin-wrap {
+    max-width: var(--max-w); margin: 0 auto;
+    padding: 80px 40px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .origin-img { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/5; }
+  .origin-img img { width:100%; height:100%; object-fit:cover; }
+  .origin-text h2 { font-family:var(--font-display); font-size:clamp(38px,5vw,58px); font-weight:900; text-transform:uppercase; letter-spacing:1px; line-height:1; margin-bottom:20px; }
+  .origin-text h2 span { color:var(--cyan); }
+  .origin-text p { color:var(--text2); font-size:15px; line-height:1.9; margin-bottom:14px; }
+
+  /* MISSION CARDS */
+  .mission-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:var(--max-w); margin:0 auto; }
+  .mission-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:32px; transition:var(--transition); }
+  .mission-card:hover { border-color:var(--cyan-border); transform:translateY(-6px); box-shadow:var(--shadow-glow); }
+  .mc-icon { font-size:36px; margin-bottom:16px; }
+  .mc-num  { font-family:var(--font-display); font-size:52px; font-weight:900; color:var(--cyan); opacity:0.18; line-height:1; }
+  .mission-card h3 { font-family:var(--font-display); font-size:22px; font-weight:900; letter-spacing:1px; margin-bottom:10px; margin-top:-12px; }
+  .mission-card p  { color:var(--text2); font-size:14px; line-height:1.8; }
+
+  /* TIMELINE */
+  .tl-wrap { max-width:900px; margin:0 auto; position:relative; padding: 0 0 20px; }
+  .tl-line {
+    position:absolute; left:50%; top:0; bottom:0; width:1px;
+    background:linear-gradient(to bottom, transparent, var(--cyan) 15%, var(--cyan) 85%, transparent);
+    transform:translateX(-50%);
+  }
+  .tl-item { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-bottom:80px; align-items:center; position:relative; }
+  .tl-item:nth-child(even) .tl-img  { order:2; }
+  .tl-item:nth-child(even) .tl-text { order:1; text-align:right; }
+  .tl-dot {
+    position:absolute; left:50%; top:50%;
+    width:18px; height:18px; border-radius:50%;
+    background:var(--bg); border:3px solid var(--cyan);
+    transform:translate(-50%,-50%);
+    box-shadow: 0 0 20px var(--cyan-glow), 0 0 0 6px rgba(0,212,255,0.08);
+  }
+  .tl-img { border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/3; }
+  .tl-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease; }
+  .tl-img:hover img { transform:scale(1.04); }
+  .tl-year { font-family:var(--font-display); font-size:64px; font-weight:900; color:var(--cyan); opacity:0.25; line-height:1; }
+  .tl-text h3 { font-family:var(--font-display); font-size:28px; font-weight:900; letter-spacing:1px; margin-top:-12px; margin-bottom:12px; }
+  .tl-text p   { color:var(--text2); font-size:14px; line-height:1.9; }
+
+  /* VALUES */
+  .values-row { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--border); border-radius:var(--radius); overflow:hidden; }
+  .val-box { background:var(--surface); padding:32px 20px; text-align:center; transition:var(--transition); }
+  .val-box:hover { background:var(--surface2); }
+  .val-num   { font-family:var(--font-display); font-size:46px; font-weight:900; color:var(--cyan); }
+  .val-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--text3); margin-top:6px; }
+
+  @media(max-width:900px){
+    .origin-wrap { grid-template-columns:1fr; padding:60px 24px; gap:40px; }
+    .mission-grid { grid-template-columns:1fr; max-width:500px; }
+    .tl-line { left:24px; }
+    .tl-item { grid-template-columns:1fr; padding-left:56px; gap:20px; }
+    .tl-item:nth-child(even) .tl-img  { order:unset; }
+    .tl-item:nth-child(even) .tl-text { order:unset; text-align:left; }
+    .tl-dot  { left:24px; top:28px; }
+    .values-row { grid-template-columns:1fr 1fr; }
+  }
+  </style>
+</head>
+<body data-page="about">
+<header class="header" id="mainHeader">
+  <a href="index.html" class="logo"><img src="images/dumbbell.png" alt="" width="34">EESH<span class="logo-accent">LETICS</span></a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="index.html"              data-nav="home">Home</a>
+    <a href="about.html"              data-nav="about">About</a>
+    <a href="services.html"           data-nav="services">Services</a>
+    <a href="trainers.html"           data-nav="trainers">Trainers</a>
+    <a href="pricing.html"            data-nav="pricing">Pricing</a>
+    <a href="fitness-calculator.html" data-nav="calculator">Calculator</a>
+    <a href="contact.html"            data-nav="contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☀️</button>
+    <a href="pricing.html" class="btn btn-primary btn-sm">Join Now</a>
+  </div>
+</header>
+
+<main class="page-content" style="padding-top:var(--header-h)">
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="eyebrow">Since 2015</div>
+    <h1>OUR <span class="hl">STORY</span></h1>
+    <p class="subtitle">A legacy built on sweat, discipline, and the unshakeable belief that every person deserves to feel powerful in their body.</p>
+  </section>
+
+  <!-- ORIGIN -->
+  <section>
+    <div class="origin-wrap">
+      <div class="origin-img reveal reveal-left">
+        <img src="images/origin.jpg" alt="Eeshletics origin" loading="lazy">
+      </div>
+      <div class="reveal reveal-right">
+        <div class="eyebrow" style="justify-content:flex-start;margin-bottom:12px">The Beginning</div>
+        <h2>THE BEGINNING OF <span>EESHLETICS</span></h2>
+        <p>In its earliest days, Eeshletics was shaped by a clear and powerful vision — to redefine fitness as a way of life built on discipline, resilience, and inner strength.</p>
+        <p>What began as a passion-driven idea quickly evolved into a performance-focused training environment where dedication is rewarded with real, measurable results. From day one, our foundation has been rooted in hard work and an unshakeable belief that true transformation happens when physical training strengthens the mind as much as the body.</p>
+        <div class="mt-md" style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="trainers.html" class="btn btn-outline">Meet Our Team</a>
+          <a href="pricing.html"  class="btn btn-ghost">View Plans</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION / VISION / VALUES -->
+  <section class="section-pad" style="background:var(--bg2)">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">What Drives Us</div>
+        <h2>MISSION, VISION<br><span class="text-cyan">& VALUES</span></h2>
+      </div>
+      <div class="mission-grid">
+        <div class="mission-card reveal">
+          <div class="mc-num">01</div>
+          <div class="mc-icon">🎯</div>
+          <h3>OUR MISSION</h3>
+          <p>To empower every individual — regardless of age, background, or fitness level — to discover their physical potential through expert training, community, and unwavering support.</p>
+        </div>
+        <div class="mission-card reveal delay-1">
+          <div class="mc-num">02</div>
+          <div class="mc-icon">🔭</div>
+          <h3>OUR VISION</h3>
+          <p>To become Pakistan's most trusted fitness brand — where science-backed training, world-class facilities, and human connection converge to create lasting transformation.</p>
+        </div>
+        <div class="mission-card reveal delay-2">
+          <div class="mc-num">03</div>
+          <div class="mc-icon">💎</div>
+          <h3>OUR VALUES</h3>
+          <p>Discipline over motivation. Consistency over intensity. Community over competition. Greatness is built in the everyday — not the exceptional moment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section-pad" style="padding-bottom:0">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat-cell reveal"><div class="stat-num" data-count="2500">0</div><div class="stat-label">Members</div></div>
+        <div class="stat-cell reveal delay-1"><div class="stat-num" data-count="12">0</div><div class="stat-label">Trainers</div></div>
+        <div class="stat-cell reveal delay-2"><div class="stat-num" data-count="8">0</div><div class="stat-label">Years</div></div>
+        <div class="stat-cell reveal delay-3"><div class="stat-num" data-count="3">0</div><div class="stat-label">Locations</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Our Journey</div>
+        <h2>THE EESHLETICS <span class="text-cyan">TIMELINE</span></h2>
+      </div>
+      <div class="tl-wrap">
+        <div class="tl-line" aria-hidden="true"></div>
+
+        <div class="tl-item reveal">
+          <div class="tl-img"><img src="images/EarlyDays.jpg" alt="2015 Early Days" loading="lazy"></div>
+          <div class="tl-text">
+            <div class="tl-year">2015</div>
+            <h3>THE EARLY DAYS</h3>
+            <p>Every journey has a beginning. Ours started with a small space, a handful of dedicated members, and a big dream: to push limits and redefine what it means to be healthy in Pakistan. These early days shaped our resilience.</p>
+          </div>
+          <div class="tl-dot" aria-hidden="true"></div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-img"><img src="images/growth.jpg" alt="2018 Growth" loading="lazy"></div>
+          <div class="tl-text">
+            <div class="tl-year">2018</div>
+            <h3>GROWTH & EVOLUTION</h3>
+            <p>We expanded floor space, doubled equipment, brought on certified trainers, and introduced structured programming. Hundreds of members began achieving results they never thought possible.</p>
+          </div>
+          <div class="tl-dot" aria-hidden="true"></div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-img"><img src="images/community.jpg" alt="2021 Community" loading="lazy"></div>
+          <div class="tl-text">
+            <div class="tl-year">2021</div>
+            <h3>BUILDING COMMUNITY</h3>
+            <p>Community became the heartbeat of Eeshletics. From high-energy group classes to challenges and events — we stopped being a gym and became a movement. Over 1,000 members sharing goals daily.</p>
+          </div>
+          <div class="tl-dot" aria-hidden="true"></div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-img"><img src="images/future.jpg" alt="2025 Future" loading="lazy"></div>
+          <div class="tl-text">
+            <div class="tl-year">2025</div>
+            <h3>THE FUTURE IS NOW</h3>
+            <p>Expanding into digital fitness — online calculators, progress tracking dashboards, and remote coaching. Our vision is to reach every Pakistani who wants to transform their body and life, wherever they are.</p>
+          </div>
+          <div class="tl-dot" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMBERS STRIP -->
+  <section class="section-pad" style="background:var(--bg2)">
+    <div class="container">
+      <div class="section-head reveal"><div class="eyebrow">By the Numbers</div><h2>EESHLETICS IN <span class="text-cyan">NUMBERS</span></h2></div>
+      <div class="values-row">
+        <div class="val-box reveal"><div class="val-num" data-count="2500">0</div><div class="val-label">Members</div></div>
+        <div class="val-box reveal delay-1"><div class="val-num" data-count="12">0</div><div class="val-label">Trainers</div></div>
+        <div class="val-box reveal delay-2"><div class="val-num" data-count="200">0</div><div class="val-label">Equipment</div></div>
+        <div class="val-box reveal delay-3"><div class="val-num" data-count="98">0</div><div class="val-label">% Satisfied</div></div>
+        <div class="val-box reveal delay-4"><div class="val-num" data-count="3">0</div><div class="val-label">Locations</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer><div class="footer-inner">
+    <div class="footer-top">
+      <div><a href="index.html" class="logo" style="font-size:21px"><img src="images/dumbbell.png" alt="" width="26">EESH<span class="logo-accent">LETICS</span></a><p class="footer-brand-desc">Pakistan's premier performance gym.</p><div class="social-row"><a href="#" class="social-btn" aria-label="Instagram">📸</a><a href="#" class="social-btn" aria-label="Facebook">📘</a><a href="#" class="social-btn" aria-label="YouTube">▶️</a></div></div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="trainers.html">Trainers</a></li></ul></div>
+      <div class="footer-col"><h4>Tools</h4><ul><li><a href="fitness-calculator.html">Calculator</a></li><li><a href="dashboard.html">Dashboard</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Message Us</a></li><li><a href="tel:+923001234567">+92 300 1234567</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Eeshletics. All rights reserved.</span><span class="portfolio-pill">Portfolio Project</span></div>
+  </div></footer>
+</main>
+<script src="js/script.js"></script>
+</body>
+</html>

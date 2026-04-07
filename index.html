@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eeshletics — Pakistan's premier performance gym in Karachi. Expert trainers, modern equipment, and science-based programming.">
+  <meta property="og:title" content="Eeshletics | Train Harder. Live Stronger.">
+  <meta property="og:description" content="Join Karachi's most results-driven gym. 2,500+ members. 12 certified trainers.">
+  <meta name="theme-color" content="#070b12">
+  <title>Eeshletics | Train Harder. Live Stronger.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+  /* ══════════════ INDEX-ONLY STYLES ══════════════════════════════ */
+
+  /* ─── HERO ──────────────────────────────────────────────────── */
+  .hero-section {
+    min-height: 100svh;
+    padding: calc(var(--header-h) + 40px) 60px 60px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: 52px;
+    position: relative;
+    overflow: hidden;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* animated radial glow */
+  .hero-section::before {
+    content: '';
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 80% at 5% 55%,   rgba(0,212,255,0.11) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 55% at 96% 12%,  rgba(59,130,246,0.09) 0%, transparent 60%),
+      radial-gradient(ellipse 35% 45% at 55% 100%, rgba(0,212,255,0.07) 0%, transparent 55%);
+    animation: bgPulse 14s ease-in-out infinite alternate;
+  }
+  @keyframes bgPulse {
+    0%   { opacity:1;   transform:scale(1); }
+    100% { opacity:0.7; transform:scale(1.07) translateY(-20px); }
+  }
+
+  /* ─── HERO LEFT ─────────────────────────────────────────────── */
+  .hero-left { position: relative; z-index: 1; }
+
+  .hero-kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 7px 18px; border-radius: 99px;
+    background: var(--cyan-dim); border: 1px solid var(--cyan-border);
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--cyan); margin-bottom: 28px;
+  }
+  .kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--cyan); flex-shrink: 0;
+    animation: dotPulse 1.8s ease infinite;
+  }
+  @keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(1.7)} }
+
+  .hero-h1 {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(62px, 7vw, 106px);
+    line-height: 0.92; letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 26px;
+  }
+  .hero-h1 .h1-italic { font-style: italic; color: var(--cyan); display: block; }
+  .hero-h1 .h1-outline {
+    -webkit-text-stroke: 2px var(--text); color: transparent; display: block;
+  }
+  [data-theme="light"] .hero-h1 .h1-outline { -webkit-text-stroke: 2px #0f172a; }
+
+  .hero-typed {
+    font-size: 15px; color: var(--text2); margin-bottom: 32px;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .typed-cursor {
+    display: inline-block; width: 2px; height: 17px; background: var(--cyan);
+    vertical-align: middle; animation: cursorBlink 1s step-end infinite;
+  }
+  @keyframes cursorBlink { 50% { opacity: 0; } }
+  #typedWord { color: var(--cyan); font-weight: 700; }
+
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+
+  .hero-trust { display: flex; gap: 10px; flex-wrap: wrap; }
+  .trust-badge {
+    display: flex; align-items: center; gap: 8px; padding: 9px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--surface); border: 1px solid var(--border2);
+    font-size: 12.5px; color: var(--text2); transition: var(--transition);
+  }
+  .trust-badge:hover { border-color: var(--cyan-border); color: var(--cyan); }
+
+  /* ─── HERO RIGHT — Glassmorphism Card ───────────────────────── */
+  .hero-form-card {
+    position: relative; z-index: 1;
+    background: rgba(15, 24, 41, 0.76);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid rgba(0, 212, 255, 0.20);
+    border-radius: 22px;
+    padding: 36px 34px 32px;
+    box-shadow:
+      0 24px 64px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(0,212,255,0.05) inset;
+    animation: cardIn 0.85s cubic-bezier(0.34, 1.4, 0.64, 1) 0.15s both;
+  }
+  @keyframes cardIn {
+    from { opacity:0; transform:translateY(28px) scale(0.96); }
+    to   { opacity:1; transform:translateY(0)    scale(1); }
+  }
+  /* top accent bar */
+  .hero-form-card::before {
+    content: '';
+    position: absolute; top: -1px; left: 12%; right: 12%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyan) 30%, var(--blue) 70%, transparent);
+  }
+  [data-theme="light"] .hero-form-card {
+    background: rgba(255,255,255,0.88);
+    border-color: rgba(0,212,255,0.22);
+    box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+  }
+
+  .fc-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 6px;
+  }
+  .fc-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0; color: #070b12;
+  }
+  .fc-title { font-family:var(--font-display); font-size:26px; font-weight:900; letter-spacing:1px; }
+  .fc-sub   { color:var(--text2); font-size:12.5px; margin-bottom:22px; }
+
+  #gymForm { display: flex; flex-direction: column; gap: 12px; }
+
+  /* BMI sub-section */
+  .bmi-sub {
+    margin-top: 20px; padding-top: 20px;
+    border-top: 1px solid rgba(0,212,255,0.12);
+  }
+  .bmi-sub-title {
+    font-family:var(--font-display); font-size:14px; font-weight:900;
+    letter-spacing:2px; text-transform:uppercase; color:var(--text3);
+    margin-bottom:12px; display:flex; align-items:center; gap:10px;
+  }
+  .bmi-sub-title::after { content:''; flex:1; height:1px; background:var(--border); }
+  .bmi-inputs { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  #bmiResult  { margin-top:10px; font-size:14px; font-weight:600; min-height:22px; }
+
+  /* ─── TICKER ─────────────────────────────────────────────────── */
+  .ticker-strip {
+    background:var(--surface); border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border); padding:15px 0; overflow:hidden;
+  }
+  .ticker-inner {
+    display:flex; gap:52px; width:max-content;
+    animation:tickerScroll 30s linear infinite;
+  }
+  @keyframes tickerScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .t-item { display:flex; align-items:center; gap:9px; white-space:nowrap; font-size:13px; font-weight:500; color:var(--text2); }
+  .t-sep  { color:var(--cyan); opacity:0.35; font-size:10px; }
+
+  /* ─── SERVICES ───────────────────────────────────────────────── */
+  .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:var(--max-w); margin:0 auto; }
+  .svc-card { border-radius:var(--radius-lg); overflow:hidden; background:var(--surface); border:1px solid var(--border); transition:var(--transition); }
+  .svc-card:hover { transform:translateY(-8px); border-color:var(--cyan-border); box-shadow:var(--shadow-glow); }
+  .svc-img   { aspect-ratio:16/10; overflow:hidden; }
+  .svc-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.55s ease; }
+  .svc-card:hover .svc-img img { transform:scale(1.07); }
+  .svc-body  { padding:22px 24px; }
+  .svc-body h3 { font-family:var(--font-display); font-size:22px; font-weight:900; letter-spacing:1px; margin-bottom:6px; }
+  .svc-body p  { color:var(--text2); font-size:13.5px; line-height:1.7; margin-bottom:14px; }
+  .svc-link { font-size:12px; font-weight:700; color:var(--cyan); text-transform:uppercase; letter-spacing:1px; transition:var(--transition); }
+  .svc-card:hover .svc-link { letter-spacing:2px; }
+
+  /* ─── WHY US ─────────────────────────────────────────────────── */
+  .why-layout  { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; max-width:var(--max-w); margin:0 auto; }
+  .why-img     { border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/5; }
+  .why-img img { width:100%; height:100%; object-fit:cover; }
+  .why-points  { display:flex; flex-direction:column; gap:24px; margin-top:32px; }
+  .why-pt      { display:flex; gap:16px; align-items:flex-start; }
+  .why-icon    { width:46px; height:46px; border-radius:var(--radius-sm); flex-shrink:0; background:var(--cyan-dim); border:1px solid var(--cyan-border); display:flex; align-items:center; justify-content:center; font-size:20px; }
+  .why-pt h4   { font-weight:700; font-size:15px; margin-bottom:3px; }
+  .why-pt p    { color:var(--text2); font-size:13.5px; }
+
+  /* ─── CTA BANNER ─────────────────────────────────────────────── */
+  .cta-banner {
+    background:linear-gradient(135deg,#00d4ff 0%,#0099cc 50%,#3b82f6 100%);
+    color:#070b12; padding:90px 40px; text-align:center; position:relative; overflow:hidden;
+  }
+  .cta-banner::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(45deg,rgba(255,255,255,0.04) 0,rgba(255,255,255,0.04) 1px,transparent 1px,transparent 12px); }
+  .cta-banner > * { position:relative; }
+  .cta-banner h2 { font-family:var(--font-display); font-size:clamp(44px,7vw,80px); font-weight:900; letter-spacing:2px; margin-bottom:16px; line-height:1; }
+  .cta-banner p  { font-size:16px; opacity:0.75; margin-bottom:32px; }
+  .cta-banner .btn { background:#070b12; color:var(--cyan); font-size:15px; }
+  .cta-banner .btn:hover { background:#0f1829; transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,0.4); }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .hero-section { padding: calc(var(--header-h) + 28px) 40px 50px; gap: 36px; }
+  }
+  @media (max-width: 900px) {
+    .hero-section { grid-template-columns:1fr; padding:calc(var(--header-h)+20px) 24px 40px; gap:32px; }
+    .hero-form-card { padding:28px 24px; }
+    .why-layout { grid-template-columns:1fr; gap:40px; }
+    .why-img    { aspect-ratio:16/9; }
+    .svc-grid   { grid-template-columns:1fr; max-width:500px; }
+  }
+  @media (max-width: 600px) {
+    .cta-banner { padding:60px 24px; }
+    .svc-grid   { max-width:100%; }
+    .hero-section { padding-left:20px; padding-right:20px; }
+  }
+  </style>
+</head>
+<body data-page="home">
+
+<!-- HEADER -->
+<header class="header" id="mainHeader">
+  <a href="index.html" class="logo">
+    <img src="images/dumbbell.png" alt="Eeshletics logo" width="34" height="34">
+    EESH<span class="logo-accent">LETICS</span>
+  </a>
+  <button class="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="index.html"              data-nav="home">Home</a>
+    <a href="about.html"              data-nav="about">About</a>
+    <a href="services.html"           data-nav="services">Services</a>
+    <a href="trainers.html"           data-nav="trainers">Trainers</a>
+    <a href="pricing.html"            data-nav="pricing">Pricing</a>
+    <a href="fitness-calculator.html" data-nav="calculator">Calculator</a>
+    <a href="contact.html"            data-nav="contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <button class="theme-btn" id="themeToggle" aria-label="Toggle dark/light mode">☀️</button>
+    <a href="#joinSection" class="btn btn-primary btn-sm">Join Now</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero-section" id="home">
+
+  <!-- LEFT -->
+  <div class="hero-left">
+    <div class="hero-kicker">
+      <span class="kicker-dot"></span>
+      Now Open · Karachi, Pakistan
+    </div>
+    <h1 class="hero-h1">
+      TRAIN<br>
+      <span class="h1-italic">HARDER.</span>
+      <span class="h1-outline">LIVE</span>
+      STRONGER.
+    </h1>
+    <p class="hero-typed">
+      We specialise in&nbsp;<span id="typedWord">fat loss.</span><span class="typed-cursor"></span>
+    </p>
+    <div class="hero-ctas">
+      <a href="#joinSection" class="btn btn-primary btn-lg">Start Free Trial</a>
+      <a href="services.html" class="btn btn-outline btn-lg">Explore Services</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-badge">🏆 NASM Certified Trainers</div>
+      <div class="trust-badge">⚡ Open 6AM – 11PM</div>
+      <div class="trust-badge">📍 Karachi, Pakistan</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: floating glass form card -->
+  <div class="hero-form-card" id="joinSection">
+    <div class="fc-header">
+      <div class="fc-icon">💪</div>
+      <div class="fc-title">JOIN EESHLETICS</div>
+    </div>
+    <p class="fc-sub">Register now — our team will contact you within 24 hours.</p>
+    <form id="gymForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Ahmed Ali" required>
+        </div>
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number" id="age" placeholder="25" min="10" max="80" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" required>
+          <option value="">Select gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Prefer not to say</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="location">Area / Locality</label>
+        <input type="text" id="location" placeholder="DHA, Clifton, Gulshan…" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" placeholder="+92 300 …" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w100">Register Now &rarr;</button>
+    </form>
+    <!-- BMI quick check -->
+    <div class="bmi-sub">
+      <div class="bmi-sub-title">Quick BMI Check</div>
+      <div class="bmi-inputs">
+        <div class="form-group">
+          <label for="weight">Weight (kg)</label>
+          <input type="number" id="weight" placeholder="70">
+        </div>
+        <div class="form-group">
+          <label for="height">Height (cm)</label>
+          <input type="number" id="height" placeholder="175">
+        </div>
+      </div>
+      <button class="btn btn-ghost w100 mt-sm" onclick="calculateBMI()">Calculate BMI</button>
+      <p id="bmiResult"></p>
+    </div>
+  </div>
+
+</section>
+
+<!-- TICKER -->
+<div class="ticker-strip" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="t-item">🏋️ 200+ Equipment Pieces</span><span class="t-sep">✦</span>
+    <span class="t-item">👨‍🏫 12 Expert Trainers</span><span class="t-sep">✦</span>
+    <span class="t-item">👥 2,500+ Active Members</span><span class="t-sep">✦</span>
+    <span class="t-item">🏅 8 Years of Excellence</span><span class="t-sep">✦</span>
+    <span class="t-item">📍 3 Locations in Karachi</span><span class="t-sep">✦</span>
+    <span class="t-item">💪 NASM Certified Coaches</span><span class="t-sep">✦</span>
+    <span class="t-item">🔥 Free 3-Day Trial</span><span class="t-sep">✦</span>
+    <span class="t-item">🏋️ 200+ Equipment Pieces</span><span class="t-sep">✦</span>
+    <span class="t-item">👨‍🏫 12 Expert Trainers</span><span class="t-sep">✦</span>
+    <span class="t-item">👥 2,500+ Active Members</span><span class="t-sep">✦</span>
+    <span class="t-item">🏅 8 Years of Excellence</span><span class="t-sep">✦</span>
+    <span class="t-item">📍 3 Locations in Karachi</span><span class="t-sep">✦</span>
+    <span class="t-item">💪 NASM Certified Coaches</span><span class="t-sep">✦</span>
+    <span class="t-item">🔥 Free 3-Day Trial</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="section-pad" style="padding-bottom:0">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-cell reveal"><div class="stat-num" data-count="2500">0</div><div class="stat-label">Active Members</div></div>
+      <div class="stat-cell reveal delay-1"><div class="stat-num" data-count="12">0</div><div class="stat-label">Expert Trainers</div></div>
+      <div class="stat-cell reveal delay-2"><div class="stat-num" data-count="200">0</div><div class="stat-label">Equipment Pieces</div></div>
+      <div class="stat-cell reveal delay-3"><div class="stat-num" data-count="8">0</div><div class="stat-label">Years Strong</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES PREVIEW -->
+<section class="section-pad">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">What We Offer</div>
+      <h2>OUR <span class="text-cyan">SERVICES</span></h2>
+      <p>Everything you need to reach peak performance — under one roof.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc-card reveal">
+        <div class="svc-img"><img src="images/service1.jpg" alt="Personal Training" loading="lazy"></div>
+        <div class="svc-body"><h3>PERSONAL TRAINING</h3><p>One-on-one coaching tailored to your goals. Build muscle, shed fat, and gain real confidence.</p><a href="services.html" class="svc-link">Learn More &rarr;</a></div>
+      </article>
+      <article class="svc-card reveal delay-1">
+        <div class="svc-img"><img src="images/service2.jpg" alt="Modern Equipment" loading="lazy"></div>
+        <div class="svc-body"><h3>MODERN EQUIPMENT</h3><p>Commercial-grade machines and free weights for every training style and goal.</p><a href="services.html" class="svc-link">Learn More &rarr;</a></div>
+      </article>
+      <article class="svc-card reveal delay-2">
+        <div class="svc-img"><img src="images/community.jpg" alt="Group Classes" loading="lazy"></div>
+        <div class="svc-body"><h3>GROUP CLASSES</h3><p>HIIT, Yoga, Spin, Kickboxing — high-energy sessions for every fitness level.</p><a href="services.html" class="svc-link">Learn More &rarr;</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section-pad" style="background:var(--bg2)">
+  <div class="why-layout container">
+    <div class="reveal reveal-left">
+      <div class="why-img"><img src="images/origin.jpg" alt="Eeshletics gym floor" loading="lazy"></div>
+    </div>
+    <div>
+      <div class="section-head" style="text-align:left;margin-bottom:16px">
+        <div class="eyebrow" style="justify-content:flex-start">Why Choose Us</div>
+        <h2>BUILT FOR<br><span class="text-cyan">RESULTS</span></h2>
+      </div>
+      <div class="why-points">
+        <div class="why-pt reveal"><div class="why-icon">🏆</div><div><h4>NASM Certified Trainers</h4><p>Every coach holds international certifications and continuously updates their education.</p></div></div>
+        <div class="why-pt reveal delay-1"><div class="why-icon">⚡</div><div><h4>Science-Based Programming</h4><p>Progressive overload, periodisation, and evidence-based nutrition — no guesswork, ever.</p></div></div>
+        <div class="why-pt reveal delay-2"><div class="why-icon">🤝</div><div><h4>Real Community</h4><p>2,500+ members who celebrate, motivate, and push each other to new PRs every day.</p></div></div>
+        <div class="why-pt reveal delay-3"><div class="why-icon">📊</div><div><h4>Tracked Progress</h4><p>Log workouts, monitor BMI trends, and visualise your transformation on our dashboard.</p></div></div>
+      </div>
+      <div class="mt-lg" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="about.html"   class="btn btn-outline">Our Story</a>
+        <a href="pricing.html" class="btn btn-ghost">View Plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner reveal">
+  <h2>YOUR JOURNEY<br>STARTS TODAY</h2>
+  <p>Join 2,500+ members already transforming their lives at Eeshletics.</p>
+  <a href="#joinSection" class="btn btn-lg">Claim Your Free Trial</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo" style="font-size:22px">
+          <img src="images/dumbbell.png" alt="" width="28" height="28">
+          EESH<span class="logo-accent">LETICS</span>
+        </a>
+        <p class="footer-brand-desc">Pakistan's premier performance gym — built on discipline, fuelled by science, defined by results.</p>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Instagram">📸</a>
+          <a href="#" class="social-btn" aria-label="Facebook">📘</a>
+          <a href="#" class="social-btn" aria-label="YouTube">▶️</a>
+          <a href="#" class="social-btn" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="trainers.html">Trainers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="fitness-calculator.html">BMI Calculator</a></li>
+          <li><a href="fitness-calculator.html">Calorie Calc</a></li>
+          <li><a href="dashboard.html">Progress Tracker</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="contact.html">Send a Message</a></li>
+          <li><a href="tel:+923001234567">+92 300 1234567</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#274e494148674242544f4b42534e44540944484a"><span class="__cf_email__" data-cfemail="2d44434b426d48485e45414859444e5e034e4240">[email&#160;protected]</span></a></li>
+          <li><a href="#">Karachi, Pakistan</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Eeshletics. All rights reserved.</span>
+      <span class="portfolio-pill">Portfolio Project · HTML · CSS · JS</span>
+    </div>
+  </div>
+</footer>
+
+</main>
+<script src="js/script.js"></script>
+<script>
+  typeText(
+    document.getElementById('typedWord'),
+    ['fat loss.', 'muscle gain.', 'strength.', 'endurance.', 'confidence.', 'real results.'],
+    85, 2200
+  );
+</script>
+</body>
+</html>
